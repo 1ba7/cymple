@@ -24,35 +24,114 @@
 \newcommand{\code}[1]{\texttt{#1}}
 
 \section{Progress Overview}
+Here is a summary of the progress we've made over the last week.
 \begin{itemize}
-\item We've made progress.
+\item \mono{git} --- we've all set up git and are getting comfortable using it.
+\item Design --- we've designed, on paper a mockup for the GUI, discussed it and
+refined the design.
+\item Arhicecture Overview --- we've figured out how we're going to partition the
+code (detailed below)
+\item Roadmap --- we've outlined a roadmap of what we're going to do
 \end{itemize}
 
 \section{Source Code Management}
+We've decided to use \code{git} for source code management in favour of
+\code{svn}. We're going to use GitHub to host our code. It provides a really
+nice web interface that lists all the files, branches and commit data. It makes
+it very easy to track who's made what changes to what files, etc.
 \begin{itemize}
-\item Using git.
-\end{itemize}
-
-\section{Meetings}
-\begin{itemize}
-\item Had a few meetings.\begin{itemize}
-	\item Minutes of one of 'em.
-\end{itemize}
+\item We've all set up accounts on \href{http://github.com}{GitHub}, and our
+centralised repository is hosted \href{http://github.com/1ba7/}{here}.
+\item Everybody has installed \code{msysgit} (Windows port of \code{git}) on
+their computers. Shane ran a tutorial explaining how to use it and distributed
+documentation to everybody.
+\item There have been some issues with getting \code{msysgit} running on the
+lab machines in college, but once these get sorted out we should all be able to
+start making commits to the repository.
+\item Our GitHub repository is the first result when you Google for "1ba7".
 \end{itemize}
 
 \section{Graphical Design}
 \begin{itemize}
-\item Looks deadly.
+\item Last week, Cris did an initial design on paper of what the GUI should look
+like.
+\item This was discussed at a meeting during the week.
+\item We had some more ideas and refinements and we redid the GUI (on paper).
+\item We're happy enough with the current design to work with it for now.
+\item Cris and Stiabh are working on doing digitising these mockups.
 \end{itemize}
 
 \section{Architecture Overview}
+Initially we decided upon a two-layered approach: the GUI and the data
+backend. After thinking about this a little more it was decided that we actually
+want three layers.
 \begin{itemize}
-\item Three components.
+\item data layer --- this provides a well-defined API for the application to
+use to get useful data from the \mono{.csv} file. It handles all the parsing of
+the \mono{.csv} file and stores the data in an efficient way.
+\item widget toolkit --- this provides a set of high-level, reusable widgets
+(implemented in Processing) which are used in the application.
+\item application --- this uses the data layer and the widget toolkit to
+implement an application which visualises the data from the \code{.csv} file.
 \end{itemize}
+\par Shane has started work on documenting all the classes that these APIs will
+need to provide in YAML. These YAML files will be used to create .java and .pde
+stub files.
 
 \section{Roadmap}
+Here is our Roadmap as outlined in an email sent to the mailing list by Shane:
 \begin{itemize}
-\item ???? Profit!
-\end{itemize}
+\item Git ---
+We need to make sure that we're all comfortable with using git and
+github. There are a few things I didn't cover properly in the git
+tutorial and Stiabh missed it completely. My messages about github
+probably caused confusion more than anything else, so I think we
+should have another session where everybody plays around with git and
+makes a few commits to our github just to make sure they're
+comfortable with it. I will also explain SSH keys properly and help
+you get set up so that you can make commits to github from both your
+laptop and the machines on campus.
+See: \url{http://en.wikipedia.org/wiki/Git_(software)}
+See: \url{http://nathanj.github.com/gitguide/}
+See: \url{http://www-cs-students.stanford.edu/~blynn/gitmagic/} (if you feel
+like learning how to use git from the command-line)
+Our github page: \url{http://github.com/1ba7}
 
+\item Finalise design of the application ---
+Once everybody's comfortable with git, the next thing we should focus
+on is the design of the application. This means we need to figure out
+in a concrete way what kind of sets of data we want our application to
+be capable of visualising and what the user interface for this
+application is to look like (in terms of buttons, scrollbars, etc). We
+definitely shouldn't rush this, but we do need to get it done
+reasonably soon.
+
+\item Design APIs for the data layer and the toolkit
+This step absolutely depends on the design of the application being
+finalised if it is to be done effectively. We need to get a concrete
+idea of what classes and methods the application is going to need
+access to in the data layers and what widgets and events we need to
+provide the application with in the widget toolkit
+See: \url{http://en.wikipedia.org/wiki/Encapsulation_(computer_science)}
+See: \url{http://en.wikipedia.org/wiki/Widget_toolkit}
+See: \url{http://java.sun.com/docs/books/tutorial/java/concepts/inheritance.html}
+
+\item Implement the toolkit and the data layer
+This is probably going to take the longest out of any of the steps,
+but thankfully, the toolkit and the data layer can be worked on in
+parallel because they will be independent of each other. As in, it
+won't be the case that the toolkit can't be worked on because it
+depends on a certain feature in the data layer because they are
+independent. We should split into two teams, one working on each of
+these layers. Although we will be mainly focused onthe layer that
+we're working on, we should still be familiar with the codebase of the
+layer that we are not ourselves working on.
+
+\item Bringing it all together
+Once we have the toolkit and the data layer done, we can then put them
+together and make the actual application. Unfortunately, this is
+probably going to unearth a number of unexpected bugs, so we should
+allocate sufficient time for the completion of this task.
+
+\end{itemize}
 \end{document}
