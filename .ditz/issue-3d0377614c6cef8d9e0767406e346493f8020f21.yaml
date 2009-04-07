@@ -1,0 +1,29 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Set up Wiki for project
+desc: |-
+  I've written a lot of emails and said a lot of stuff in group meetings about the project, but I haven't documented it properly.
+  
+  I should set up the github wiki properly and write everything down there, encourage other people to add stuff too.
+  
+  A lot of the initial documentation could be sourced almost directly from emails that I've sent to the list.
+type: :task
+component: docs
+release: 
+reporter: Shane <shane@duairc.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-04-07 01:48:23.739830 Z
+references: []
+
+id: 3d0377614c6cef8d9e0767406e346493f8020f21
+log_events: 
+- - 2009-04-07 01:48:23.740189 Z
+  - Shane <shane@duairc.com>
+  - created
+  - ""
+- - 2009-04-07 01:48:45.076971 Z
+  - Shane <shane@duairc.com>
+  - issue claimed
+  - duairc
+git_branch: 
+claimer: Shane <shane@duairc.com>
