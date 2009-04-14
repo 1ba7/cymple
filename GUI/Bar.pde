@@ -5,7 +5,7 @@ class Bar extends Widget{
   String label;
   int event;
   
-  Bar(int x,int y, int w, int h, color w_color, int event){
+  Bar(int x,int y, int w, int h, color c, int event){
     
     this.x = xpos;
     this.y = ypos;
