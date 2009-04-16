@@ -14,10 +14,3 @@ Widget:
   methods:
     public void onMouseover(Event e): |-
       This method is called when the mouse moves over the widget.
-
-#
-#Application:
-#  __docs__: |
-#    This is a base class for 
-#  void setup(): 
-#  void draw():
