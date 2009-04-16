@@ -59,7 +59,7 @@ Data:
     public Artist getArtist(short id): Returns the artist with this id.
     public Album getAlbum(short id): Returns the album with this id.
     public Track getTrack(short id): Returns the track with this id.
-    public void query(SelectItemData[] users, SelectItemData[] albums):
+    public void query(SelectItemData[] users, SelectItemData[] albums): |-
       Updates the values of users, albums and ultimately listens. This will
       change the behaviour of the Visualisable functions. This is likely
       going to be called with data from a SelectItem, so it takes arrays of
@@ -110,7 +110,7 @@ Artist:
 
 Album:
   type: class
-  implements: [SelectItemData, Comparable]
+  implements: [SelectItemData, Comparable<Album>]
   docs: |-
     Represents an album. Like all ChartKey types, every album has a unique id
     which is a short value.
@@ -126,11 +126,11 @@ Album:
     public int tracksSize(): Returns the number of tracks from this album.
     public Track[] getTracks(): Returns an array of albums by this artist.
     public int compareTo(Album other): Sorts alphabetically.
-    public String toString(): Returns "#{artist} — #{album}".
+    public String toString(): Returns "#{artist} - #{album}".
 
 Track:
   type: class
-  implements: [SelectItemData, Comparable]
+  implements: [SelectItemData, Comparable<Track>]
   docs: |-
     Represents an track. Like all ChartKey types, every track has a unique id
     which is a short value.
@@ -144,4 +144,4 @@ Track:
     public Album getAlbum(): Returns the album that this track is from.
     public Artist getArtist(): Returns the artist associated with this track.
     public int compareTo(Track other): Sorts alphabetically.
-    public String toString(): Returns "#{artist} — #{track}".
+    public String toString(): Returns "#{artist} - #{track}".
