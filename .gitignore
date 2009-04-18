@@ -2,7 +2,9 @@
 *.pyc
 *.class
 *.pdf
-gen
+gen-data-fast
 *.csv
 !tracks.csv
 !users.csv
+lib/*
+!lib/libs.yml

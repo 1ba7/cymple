@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-// Fast version of gen.rb
+// Fast version of bin/gen-data
 
 void usage(char* bin) {
 	printf("Usage: %s NUM [FILENAME]\n", bin);
@@ -46,6 +46,7 @@ int main(int argc, char **argv) {
 	char tracks[1443][140];
 	char* output;
 	char time_string[31];
+	char dir[64];
 	struct tm * timeinfo;
 	time_t start;
 	time_t finish;
@@ -64,8 +65,10 @@ int main(int argc, char **argv) {
 			output = argv[2];
 	}
 
-	dirname(argv[0]);
-	chdir(argv[0]);
+	strcpy(dir, argv[0]);
+	dirname(dir);
+	strcat(dir, "/../tmp");
+	chdir(dir);
 
 	file = fopen("users.csv", "r");
 	fgets(users[0], 15, file);
