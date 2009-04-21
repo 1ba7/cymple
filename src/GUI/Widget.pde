@@ -5,7 +5,7 @@ class Widget {
   PFont widgetFont;
   int strokecolor= 0;
 
-Widget(int x,int y, int w, int h, String label, color c, boolean event){
+Widget(int x,int y, int width, int height, String label, color w_color, PFont font, int event){
     this.x = x; 
     this.y = y;
     this.width = width; 
