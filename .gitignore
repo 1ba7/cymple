@@ -8,3 +8,4 @@ gen-data-fast
 !users.csv
 lib/*
 !lib/libs.yml
+*.bin

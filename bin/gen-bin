@@ -1,0 +1,278 @@
+#!/usr/bin/env ruby1.9
+require 'fileutils'
+require 'time'
+
+class Fixnum
+	def be(bytes = 4)
+		le(bytes).reverse
+	end
+
+	def le(bytes = 4)
+		(0..(bytes / 4.0).ceil - 1).map do |i|
+			self >> (i << 5) & 0xFFFFFFFF
+		end.pack('V' * (bytes / 4.0).ceil)[0, bytes]
+	end
+end
+
+class Hash
+	# Sorts a Hash, requires ruby1.9
+	def sort!
+		sorted = sort
+		clear
+		sorted.each do |key, value|
+			self[key] = value
+		end
+		self
+	end
+end
+
+class Time
+	def to_short(min_time, max_time)
+		range = (max_time - min_time).to_f
+		(((self - min_time) / range) * 0x10000).to_i
+	end
+end
+
+class CSV
+	def initialize(input)
+		@input = File.open(input)
+		@min_time = nil
+		@max_time = nil
+		@listens = Hash.new do |hash, user|
+			hash[user] = {
+				NilClass => (!((hax = Hash.new([]))[nil] = hax[nil]) or hax),
+				Artist => Hash.new {|hash, artist| hash[artist] = []},
+				Album => Hash.new {|hash, album| hash[album] = []},
+				Track => Hash.new {|hash, track| hash[track] = []}
+			}
+		end
+		@users = {}
+		@artists = {}
+		read
+	end
+
+	def read
+		while line = @input.gets
+			user, artist, album, track, time = line.split(/,/)
+			user = self.user(user)
+			artist = self.artist(artist)
+			album = artist.album(album)
+			track = album.track(track)
+			time = Time.parse(time)
+			@min_time = time if !@min_time or time < @min_time
+			@max_time = time if !@max_time or time > @max_time
+			add_listen(user, track, time)
+		end
+		@input.close
+	end
+
+	def listens(user, other = nil)
+		@listens[user][other.class][other]
+	end
+
+	def add_listen(user, track, time)
+		listens(user) << time
+		listens(user, track.artist) << time
+		listens(user, track.album) << time
+		listens(user, track) << time
+	end
+
+	def artist(name)
+		@artists[name] ||= Artist.new(name)
+	end
+
+	def user(name)
+		@users[name] ||= User.new(name)
+	end
+
+	def sort!
+		@users.sort!
+		@artists.sort!
+		@artists.each_value{|a| a.sort!}
+		@listens.each_value{|h| h.each_value{|l| l.each_value do |listens|
+			listens.map!{|time| time.to_short(@min_time, @max_time)}
+			listens.sort!
+		end}}
+	end
+
+	def index
+		@users.each_value{|u| u.index}
+		@artists.each_value{|a| a.index}
+	end
+
+	def process
+		sort!
+		index
+	end
+
+	def write_header(file)
+		users = @users.values.join
+		artists = @artists.values.join
+		@header_size = 24 + users.length + artists.length
+		skip = @header_size.be
+		file << 0x20080427.be << skip << @min_time.to_i.be << @max_time.to_i.be
+		file << User.count.be(2) << Artist.count.be(2) << Album.count.be(2)
+		file << Track.count.be(2)
+		file << users.length.be << @users.size.be(2) << users
+		file << artists.length.be << @artists.size.be(2) << artists
+		@header_size
+	end
+
+	def write_index(file)
+		@index_size = 1+ Artist.count + Album.count + Track.count
+		@index_size *= User.count * 8
+		pointer = @header_size + @index_size
+		User.all.each do |user|
+			size = listens(user).size
+			file << size.be << pointer.be
+			pointer += size * 2
+		end
+		User.all.each do |user|
+			[Artist, Album, Track].each do |type|
+				type.all.each do |countable|
+					size = listens(user, countable).size
+					file << size.be << pointer.be
+					pointer += size * 2
+				end
+			end
+		end
+		@listen_size = pointer - @header_size - @index_size
+	end
+
+	def write_listens(file)
+		User.all.each do |user|
+			file << listens(user).map{|l| l.be(2)}.join
+		end
+		User.all.each do |user|
+			[Artist, Album, Track].each do |type|
+				type.all.each do |countable|
+					file << listens(user, countable).map{|l| l.be(2)}.join
+				end
+			end
+		end
+	end
+
+	def write(file = 'cymple.bin')
+		File.open(file, 'wb') do |file|
+			write_header(file)
+			write_index(file)
+			write_listens(file)
+		end
+	end
+end
+
+class Countable
+	attr_reader :name
+	@@index = Hash.new{|hash, key| hash[key] = []}
+
+	def index
+		@@index[self.class] << self
+	end
+
+	def <=>(other)
+		@name <=> other.name
+	end
+
+	def to_s
+		@name.length.be(1) << @name
+	end
+
+	def self.count
+		@@index[self].size
+	end
+
+	def self.all
+		@@index[self]
+	end
+end
+
+class User < Countable
+	def initialize(name)
+		@name = name
+	end
+end
+
+class Artist < Countable
+	def initialize(name)
+		@name = name
+		@albums = {}
+	end
+
+	def sort!
+		@albums.sort!
+		@albums.each_value{|a| a.sort!}
+	end
+
+	def album(album)
+		@albums[album] ||= Album.new(self, album)
+	end
+
+	def index
+		super
+		@albums.each_value{|a| a.index}
+	end
+
+	def track(album, track)
+		self.album(album).track(track)
+	end
+
+	def to_s
+		albums = @albums.values.join
+		super << albums.size.be << @albums.size.be(2) << albums
+	end
+end
+
+class Album < Countable
+	attr_reader :artist
+
+	def initialize(artist, name)
+		@artist = artist
+		@name = name
+		@tracks = {}
+	end
+
+	def sort!
+		@tracks.sort!
+	end
+
+	def index
+		super
+		@tracks.each_value{|t| t.index}
+	end
+
+	def track(track)
+		@tracks[track] ||= Track.new(self, track)
+	end
+
+	def to_s
+		tracks = @tracks.values.join
+		super << tracks.size.be << @tracks.size.be(2) << tracks
+	end
+end
+
+class Track < Countable
+	attr_reader :album
+
+	def initialize(album, track)
+		@album = album
+		@name = track
+	end
+
+	def artist
+		@album.artist
+	end
+end
+
+input = File.join(FileUtils.pwd, ARGV[0].to_s)
+output = File.join(FileUtils.pwd, ARGV[1].to_s)
+FileUtils.cd(File.dirname(__FILE__))
+FileUtils.cd('../tmp')
+input = 'dataset.csv' unless ARGV[0]
+output = 'cymple.bin' unless ARGV[1]
+
+puts "Reading CSV file..."
+data = CSV.new(input)
+puts "Processing data..."
+data.process
+puts "Writing data to file..."
+data.write(output)
