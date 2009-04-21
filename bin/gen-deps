@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'net/http'
+require 'uri'
+require 'yaml'
+
+FileUtils.cd(File.dirname(__FILE__))
+FileUtils.cd('../lib/')
+
+http = begin
+	uri = URI.parse(ENV['http_proxy'])
+	Net::HTTP.Proxy(uri.host, uri.port, uri.user, uri.password)
+rescue URI::InvalidURIError
+	Net::HTTP
+end
+
+YAML.load_file('libs.yml').each do |dep|
+	File.open(File.split(dep).last, 'w') do |file|
+		file.write(http.get(URI.parse(dep)))
+	end
+end

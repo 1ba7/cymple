@@ -1,0 +1,72 @@
+\documentclass[titlepage,a4paper]{article}
+
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[
+	urlbordercolor = {1 1 1},
+	linkbordercolor = {1 1 1},
+	citebordercolor = {1 1 1},
+	urlcolor = blue,
+	colorlinks = true,]{hyperref}
+\usepackage{graphicx}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhead[L]{\textsc{1BA7 Group Project Lab 3}}
+\fancyfoot{}
+\fancyhead[R]{\thepage}
+
+\begin{document}
+\title{1BA7 Group Project Lab 3}
+\author{Group B}
+\date{\today}
+\maketitle
+\newcommand{\mono}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\section{Progress Overview}
+Having Easter Monday off meant that we didn't have our usual meeting slot on
+a Monday, so we haven't made as much progress in the last week as we would have
+liked to.
+\begin{itemize}
+\item Architecture for Data Layer --- we've designed the arhictecture for the
+data layer properly. All classes, methods and attributes have been documented
+thoroughly. Shane is writing a Ruby script that will convert these
+specifications into \code{.java} and \code{.pde} stubs.
+\item Stiabh been working on the icons for use in the application.
+\item The others have been working on implementing the mockup in processing
+using a the primitive Widget toolkit outlined in the lecture notes.
+\end{itemize}
+
+\section{Architecture for Data Layer}
+Keeping in mind that we are liable to run out of memory when given a large
+set of entries, and disregarding the principle of "Premature optimisation is
+the root of all evil", we've designed a set of classes and interfaces designed 
+to keep as little data in memory as possible. Features of this architecture
+include:
+\begin{itemize}
+\item Small \code{Listen} class --- The \mono{Listen} class used in our
+application, which links a user, track and a time, takes up only 16 bytes. An
+empty Java \mono{Object} takes up 8 bytes, so this is about as small it could
+possibly be. 
+\item The Artist, Album, Track and User classes have mechanisms in place to
+avoid duplicate objects being instanciated.
+\item Support for storing the data from the CSV file in a binary file format.
+This avoids having to store everything in memory, at the cost of speed. This has
+not yet been implemented and may not be implemented, but the classes are designed
+in such a way that it is a possibility if necessary.
+\end{itemize}
+
+\section{Visual Theme}
+Stiabh has been working on the cosmetic aspects of the application ---
+making icons, animations, etc. He's been doing this in 3DS Max 9 and will
+eventually export what he's been doing as \mono{.gif} and \mono{.png} files.
+
+\section{Digitising the mockup}
+Cris, Stuart and Padraig have been working on creating a \mono{processing}
+implementation of the GUI that was designed on paper. They have so far been
+using the primitive \mono{Widget} toolkit outlined in the lecture notes.
+At the same time, Shane has been designing a more flexible, reusable,
+object-oriented toolkit for use the final application. What will likely happen
+is that the toolkit which people are right now will evolve over time into the
+one which Shane is designing.
+\end{document}

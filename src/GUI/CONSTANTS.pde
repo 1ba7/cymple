@@ -1,0 +1,3 @@
+int SCREENWIDTH = 1280;
+int SCREENHEIGTH = 720;
+

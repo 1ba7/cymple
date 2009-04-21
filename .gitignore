@@ -1,0 +1,11 @@
+.ditz-config
+*.pyc
+*.class
+*.pdf
+gen-data-fast
+*.csv
+!tracks.csv
+!users.csv
+lib/*
+!lib/libs.yml
+*.bin

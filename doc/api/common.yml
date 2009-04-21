@@ -1,0 +1,53 @@
+Visualisable:
+  type: interface
+  docs: |-
+    This interface is to be implemented by data structures containing
+    chronological data that can be Graphed and Charted.
+  methods:
+    public int between(Time start, Time finish): |-
+      This returns the data point (e.g., the number of plays in this time)
+      between the two given times.
+    public Time minTime(): |-
+      Returns the earliest point in the data.
+    public Time maxTime(): |-
+      Returns the latest point in the data.
+    public TreeMap<String, Integer> chartData(Time start, Time finish,
+      ChartKey key): |-
+      This is the data that is used to draw the chart, sorted by value.
+
+ChartKey:
+  type: enum
+  docs: |-
+    This enum conatins values for each "key" which can be used in the chart.
+  values:
+  - User
+  - Artist
+  - Album
+  - Track
+
+SelectItemData:
+  type: interface
+  docs: |-
+    This interface is implemented by User, Artist, Album and Track, to be used
+    in the select menu.
+  methods:
+    public short id(): Returns the id of this object.
+    public String toString(): Returns the String representation of this object.
+
+Time:
+  type: class
+  docs: |-
+    This class represents Time. It stores Time as a short, in terms of hours
+    since November 1, 2006. This is perhaps short-sighted, but it allows us
+    to maximise the number of entries our application can handle to in the
+    range of 200 million.
+  attributes:
+    private short hours: This is the number of hours since 1/11/2006.
+  methods:
+    public Time(short hours): Constructs a new Time with the given argument.
+    public short getHours(): |-
+      Returns hours.
+    public String toStringHours(): |-
+      Returns a String representation in the form of "HH:MM".
+    public String toString(): |-
+      Returns a String representation in the form of "(D)D MON YYYY".

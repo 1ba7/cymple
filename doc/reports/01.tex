@@ -1,0 +1,71 @@
+\documentclass[titlepage,a4paper]{article}
+
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[
+	urlbordercolor = {1 1 1},
+	linkbordercolor = {1 1 1},
+	citebordercolor = {1 1 1},
+	urlcolor = blue,
+	colorlinks = true,]{hyperref}
+\usepackage{graphicx}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhead[L]{\textsc{1BA7 Group Project Lab 1}}
+\fancyfoot{}
+\fancyhead[R]{\thepage}
+
+
+\begin{document}
+\title{1BA7 Group Project Lab 1}
+\author{Group B}
+\date{\today}
+\maketitle
+\newcommand{\mono}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\section{Proposed Communications Mechanism}
+\begin{itemize}
+\item GIT for version control
+\item TCD Google Talk for instant messaging
+\item Google Gourp (iba7-teamb)
+\end{itemize}
+
+\section{Arragnement and Scheduling of Meeting Times}
+We propose to book the study room in the Hamilton Library to hold twice-weelky
+meetings totalling three hours (excluding labs and lectures). The times are as
+follows:
+\begin{itemize}
+\item 11.00 am --- 1.00 pm Monday 
+\item 12.00 pm --- 1.00 pm Tuesday
+\end{itemize}
+
+\section{Initial Work Plan}
+We propose to assign jobs initially bassed on preference (i.e., initially we do
+what we're most interested in and redeploy ourselves as necessary)
+\begin{itemize}
+\item \textbf{Maths, Data Processing}: Dan, Shane
+\item \textbf{GUI}: Cris, Stuart, Padraig
+\item \textbf{Project Manager}: Stiabh
+\end{itemize}
+
+\section{Vague Plans for Architecture}
+Shane proposes a two-layered archicture: the lower level layer is concerned with
+processes and stores the data in optimal data structures (possibly a
+self-balancing binary tree combined with a doubly-linked list) and should be able
+to do this independently of the GUI. The GUI will operate on top of this and query
+the layer. Various ideas have been suggested for the GUI although these have not
+been compiled and made consistent with each other yet.
+We plan to do a mockup on paper that will incorporate the ideas we have for the GUI.
+\par Some of the ideas we've had include a peak/trough graph with a mousewheel as 
+zoom tool, date filters, use of labels for `new entries' and use of colour gradients.
+There have been a lot of cool visualations based on last.fm data --- some influence
+could be drawn from these.
+
+\section{Preliminary Deadlines}
+\begin{itemize}
+\item Wednesday (April 1st, seriously): Git tutorial: Shane will teach the group how to use setup and use git
+\item Thursday (April 2nd): Presentation for mock up of the GUI and data structures
+\end{itemize}
+
+\end{document}
