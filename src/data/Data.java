@@ -466,12 +466,15 @@ public class Data implements Graphable, Chartable {
 		Album[] albums;
 		Track[] tracks;
 		int index;
+		int trackId = 0, albumId = 0;
 		byte[] bytes;
 
 		bytes = new byte[file.readInt()];
 		file.readFully(bytes);
 		index = 2;
 		artists = new Artist[artistCount];
+		this.albums = new Album[albumCount];
+		this.tracks = new Track[trackCount];
 
 		for (int i = 0; i < artistCount; i++) {
 			name = readString(bytes, index);
@@ -480,17 +483,19 @@ public class Data implements Graphable, Chartable {
 			index += 2;
 
 			artists[i] = new Artist(name, i, albums);
-			for (int j = 0; j < albums.length; j++) {
+			for (int j = 0; j < albums.length; j++, albumId++) {
 				name = readString(bytes, index);
 				index += 1 + name.length();
 				tracks = new Track[readShort(bytes, index)];
 				index += 2;
 
-				albums[j] = new Album(name, j, artists[i], tracks);
-				for (int k = 0; k < tracks.length; k++) {
+				albums[j] = new Album(name, albumId, artists[i], tracks);
+				this.albums[albumId] = albums[j];
+				for (int k = 0; k < tracks.length; k++, trackId++) {
 					name = readString(bytes, index);
-					tracks[k] = new Track(name, k, albums[j]);
 					index += 1 + name.length();
+					tracks[k] = new Track(name, trackId, albums[j]);
+					this.tracks[trackId] = tracks[k];
 				}
 			}
 		}
