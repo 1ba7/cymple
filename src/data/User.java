@@ -1,21 +1,27 @@
-// Represents a user. Like all ChartKey types, every user has a unique id
-// which is a short value.
-public class User implements SelectMenuItem, Comparable<User> {
+package cymple.data;
+import cymple.common.*;
+
+// Represents a user. Like all SelectItemData types, every user has a unique
+// id which is an int value.
+public class User implements SelectItemData {
 	// The name of the user.
 	private String name;
 	// The user's unique id.
-	private short id;
+	private int id;
 
-	// Returns the user's unique id.
-	protected short id() {
+    // Constructs a user.
+	protected User(String name, int id) {
+		this.name = name;
+		this.id = id;
 	}
 
-	// Sorts alphabetically.
-	public int compareTo(User other) {
+	// Returns the user's unique id.
+	public int id() {
+		return id;
 	}
 
 	// Returns the name attribute.
 	public String toString() {
+		return name;
 	}
-
 }

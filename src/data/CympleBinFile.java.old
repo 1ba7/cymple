@@ -1,0 +1,114 @@
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Date;
+
+public class CympleBinFile extends RandomAccessFile {
+	private int headerSize;
+
+	private long minTime;
+	private long maxTime;
+
+	private int userCount;
+	private int artistCount;
+	private int albumCount;
+	private int trackCount;
+
+	private int[] userIndex;
+	private int[] artistIndex;
+	private int[] albumIndex;
+	private int[] trackIndex;
+
+	public CympleBinFile(String filename) throws IOException {
+		super(filename, "r");
+		if (readInt() != 0x20080427) {
+			throw new InvalidFileFormatException();
+		}
+		headerSize = readInt();
+		minTime = readLong();
+		maxTime = readLong();
+
+		userCount = readUnsignedShort();
+		artistCount = readUnsignedShort();
+		albumCount = readUnsignedShort();
+		trackCount = readUnsignedShort();
+
+		userIndex = new int[userCount + 1];
+		artistIndex = new int[userCount * artistCount + 1];
+		albumIndex = new int[userCount * albumCount + 1];
+		trackIndex = new int[userCount * trackCount + 1];
+
+		byte[] bytes;
+		seek(headerSize);
+
+		bytes = new byte[userCount * 4];
+		readFully(bytes);
+		for (int i = 0; i < bytes.length / 4; i++) {
+			userIndex[i] = bytesToInt(bytes, i);
+		}
+
+		bytes = new byte[userCount * artistCount * 4];
+		readFully(bytes);
+		for (int i = 0; i < bytes.length / 4; i++) {
+			artistIndex[i] = bytesToInt(bytes, i);
+		}
+
+		bytes = new byte[userCount * albumCount * 4];
+		readFully(bytes);
+		for (int i = 0; i < bytes.length / 4; i++) {
+			albumIndex[i] = bytesToInt(bytes, i);
+		}
+
+		bytes = new byte[userCount * trackCount * 4];
+		readFully(bytes);
+		for (int i = 0; i < bytes.length / 4; i++) {
+			trackIndex[i] = bytesToInt(bytes, i);
+		}
+
+		userIndex[userCount] = artistIndex[0];
+		artistIndex[userCount * artistCount] = albumIndex[0];
+		albumIndex[userCount * albumCount] = trackIndex[0];
+		trackIndex[userCount * trackCount] = (int)length();
+	}
+
+	public short[] query(int users[], int albums[]) throws IOException {
+		short[] listens;
+		byte[] bytes;
+		int index;
+		int size;
+
+		size = 0;
+
+		for (int i = 0; i < users.length; i++) {
+			for (int j = 0; j < albums.length; j++) {
+				index = users[i] * albumCount + albums[j];
+				size += (albumIndex[index + 1] - albumIndex[index]) / 2;
+			}
+		}
+
+		listens = new short[size];
+		size = 0;
+
+		for (int i = 0; i < users.length; i++) {
+			for (int j = 0; j < albums.length; j++) {
+				index = users[i] * albumCount + albums[j];
+				bytes = new byte[albumIndex[index + 1] - albumIndex[index]];
+				readFully(bytes);
+				for (int k = 0; k < bytes.length / 2; k++) {
+					listens[size] = bytesToShort(bytes, k);
+					size++;
+				}
+			}
+		}
+
+		return listens;
+	}
+
+	private short bytesToShort(byte[] bytes, int index) {
+		return (short)(((bytes[index * 2] & 255) << 8) + (bytes[index * 2 + 1] & 255));
+	}
+
+	private int bytesToInt(byte[] bytes, int index) {
+		return ((bytes[index * 4] & 255) << 24) + ((bytes[index * 4 + 1] & 255) << 16) +
+			((bytes[index * 4 + 2] & 255) << 8) + (bytes[index * 4 + 3] & 255);
+	}
+}

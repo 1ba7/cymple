@@ -29,7 +29,7 @@ end
 class Time
 	def to_short(min_time, max_time)
 		range = (max_time - min_time).to_f
-		(((self - min_time) / range) * 0x10000).to_i
+		((((self - min_time) / range) - 0.5) * 0x10000).to_i & 0xFFFF
 	end
 end
 
@@ -108,31 +108,29 @@ class CSV
 	def write_header(file)
 		users = @users.values.join
 		artists = @artists.values.join
-		@header_size = 24 + users.length + artists.length
-		skip = @header_size.be
-		file << 0x20080427.be << skip << @min_time.to_i.be << @max_time.to_i.be
+		@header_size = 44 + users.bytesize + artists.bytesize
+		times = [@min_time, @max_time].map{|t| (t.to_f * 1000).to_i.be(8)}.join
+		file << 0x20080427.be << @header_size.be << times
 		file << User.count.be(2) << Artist.count.be(2) << Album.count.be(2)
 		file << Track.count.be(2)
-		file << users.length.be << @users.size.be(2) << users
-		file << artists.length.be << @artists.size.be(2) << artists
+		file << (users.bytesize + 2).be << @users.size.be(2) << users
+		file << (artists.bytesize + 2).be << @artists.size.be(2) << artists
 		@header_size
 	end
 
 	def write_index(file)
-		@index_size = 1+ Artist.count + Album.count + Track.count
-		@index_size *= User.count * 8
+		@index_size = 1 + Artist.count + Album.count + Track.count
+		@index_size *= User.count * 4
 		pointer = @header_size + @index_size
 		User.all.each do |user|
-			size = listens(user).size
-			file << size.be << pointer.be
-			pointer += size * 2
+			file << pointer.be
+			pointer += listens(user).size * 2
 		end
-		User.all.each do |user|
-			[Artist, Album, Track].each do |type|
+		[Artist, Album, Track].each do |type|
+			User.all.each do |user|
 				type.all.each do |countable|
-					size = listens(user, countable).size
-					file << size.be << pointer.be
-					pointer += size * 2
+					file << pointer.be
+					pointer += listens(user, countable).size * 2
 				end
 			end
 		end
@@ -218,7 +216,7 @@ class Artist < Countable
 
 	def to_s
 		albums = @albums.values.join
-		super << albums.size.be << @albums.size.be(2) << albums
+		super << @albums.size.be(2) << albums
 	end
 end
 
@@ -246,7 +244,7 @@ class Album < Countable
 
 	def to_s
 		tracks = @tracks.values.join
-		super << tracks.size.be << @tracks.size.be(2) << tracks
+		super << @tracks.size.be(2) << tracks
 	end
 end
 
@@ -270,9 +268,13 @@ FileUtils.cd('../tmp')
 input = 'dataset.csv' unless ARGV[0]
 output = 'cymple.bin' unless ARGV[1]
 
-puts "Reading CSV file..."
+time = Time.now
+print "Reading CSV file..."
 data = CSV.new(input)
-puts "Processing data..."
+puts " #{'%.2f' % (-time.to_f + (time = Time.now).to_f)} seconds"
+print "Processing data..."
 data.process
-puts "Writing data to file..."
+puts " #{'%.2f' % (-time.to_f + (time = Time.now).to_f)} seconds"
+print "Writing data to file..."
 data.write(output)
+puts " #{'%.2f' % (-time.to_f + (time = Time.now).to_f)} seconds"

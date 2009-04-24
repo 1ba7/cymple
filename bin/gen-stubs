@@ -1,13 +1,14 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby1.9
 require 'yaml'
 require 'fileutils'
 
 FileUtils.cd(File.dirname(__FILE__))
+FileUtils.cd('..')
 
 data = {}
-ARGV.each {|arg| data[arg] = YAML.load_file("#{arg}.yml")}
+ARGV.each {|arg| data[arg] = YAML.load_file("doc/api/#{arg}.yml")}
 
-FileUtils.cd('../..')
+FileUtils.cd('src/')
 root = FileUtils.pwd
 
 data.each do |folder, files|
@@ -37,6 +38,6 @@ data.each do |folder, files|
 				file.puts ""
 			end rescue nil
 			file.puts "}"
-		end
+		end rescue next
 	end
 end

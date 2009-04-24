@@ -17,5 +17,19 @@ end
 YAML.load_file('libs.yml').each do |dep|
 	File.open(File.split(dep).last, 'w') do |file|
 		file.write(http.get(URI.parse(dep)))
-	end
+	end rescue next
+	`jar -xf '#{File.split(dep).last}'`
 end
+
+def build(dir)
+	cp = " -cp ../lib"
+	FileUtils.mkdir_p("lib/cymple/#{dir}")
+	FileUtils.cd('src')
+	`javac#{cp} #{dir}/*.java`
+	FileUtils.cd('..')
+	`mv src/#{dir}/*.class lib/cymple/#{dir}/`
+end
+
+FileUtils.cd('..')
+build('common')
+build('data')
