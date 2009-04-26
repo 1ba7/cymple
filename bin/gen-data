@@ -2,8 +2,8 @@
 # This is more portable than the C version, but it's damn slow
 require 'fileutils'
 
-size = ARGV[0].to_i
-output = ARGV[1] or 'dataset.csv'
+size = (ARGV[0] or 150000).to_i
+output = (ARGV[1] or 'dataset.csv')
 
 FileUtils.cd(File.dirname(__FILE__))
 FileUtils.cd('../tmp')
