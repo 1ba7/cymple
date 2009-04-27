@@ -1,8 +1,6 @@
 package cymple.toolkit;
 
 public class ApplicationContainer extends Container {
-	private Application app;
-
 	public ApplicationContainer(Application app) {
 		super();
 		this.app = app;
@@ -14,9 +12,5 @@ public class ApplicationContainer extends Container {
 
 	public boolean visible() {
 		return true;
-	}
-
-	public Application app() {
-		return app;
 	}
 }

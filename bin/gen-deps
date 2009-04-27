@@ -19,7 +19,7 @@ YAML.load_file('libs.yml').each do |dep|
 		file.write(http.get(URI.parse(dep)))
 	end rescue next
 	`jar -xf '#{File.split(dep).last}'`
-end
+end unless ARGV.include?('-s')
 
 def build(dir)
 	cp = " -cp ../lib"

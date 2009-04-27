@@ -1,27 +1,22 @@
 package cymple.toolkit;
 
 public abstract class Widget {
+	protected Application app;
 	private Container parent;
 	private int x;
 	private int y;
 	private int width;
 	private int height;
-	private boolean highlight;
-	private boolean mouseOver;
-	private boolean mouseDown;
 
 	public Widget() {
+		this.app = null;
 		this.parent = null;
 	}
 
 	public void update() {
+		app.mouse().sendEvents(this);
 		if (visible()) {
-			if (highlight) {
-				highlightedDraw();
-			}
-			else {
-				draw();
-			}
+			draw();
 		}
 	}
 
@@ -41,6 +36,7 @@ public abstract class Widget {
 
 	protected void setParent(Container parent) {
 		this.parent = parent;
+		this.app = parent.getApp();
 	}
 
 	protected void setWidth(int width) {
@@ -68,35 +64,19 @@ public abstract class Widget {
 	}
 
 	public boolean contains(int x, int y) {
-		return (x > this.x && x < (this.x + width)) && (y > this.y && y < (this.y + height));
+		return visible() && x >= this.x && x < (this.x + width) && y >= this.y && y < (this.y + height);
 	}
 
-	public Application app() {
-		return parent.app();
-	}
-
-	public boolean isMouseOver() {
-		return mouseOver;
-	}
-
-	public boolean isMouseDown() {
-		return mouseDown;
-	}
-
-	protected void setMouseOver(boolean mouseOver) {
-		this.mouseOver = mouseOver;
-	}
-
-	protected void setMouseDown(boolean mouseDown) {
-		this.mouseDown = mouseDown;
+	public Application getApp() {
+		return app;
 	}
 
 	public void onMouseOver(MouseEvent e) {}
-	public void onMouseOff(MouseEvent e) {}
+	public void onMouseOut(MouseEvent e) {}
 	public void onMouseDown(MouseEvent e) {}
 	public void onMouseUp(MouseEvent e) {}
-	public void onDrag(MouseEvent e) {}
 	public void onClick(MouseEvent e) {}
+	public void onDrag(MouseEvent e) {}
 	public void onScrollUp(MouseEvent e) {}
 	public void onScrollDown(MouseEvent e) {}
 }

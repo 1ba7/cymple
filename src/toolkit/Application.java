@@ -3,13 +3,17 @@ import processing.core.PApplet;
 
 public class Application extends PApplet {
 	private ApplicationContainer container;
-	private HBox hBox;
 	private int width;
 	private int height;
+	private int wheelRotation;
+	private EventDispatcher dispatcher;
 
 	public Application(int width, int height) {
 		this.width = width;
 		this.height = height;
+		this.container = new ApplicationContainer(this);
+		this.wheelRotation = 0;
+		this.dispatcher = new EventDispatcher();
 	}
 
 	public Application() {
@@ -17,57 +21,22 @@ public class Application extends PApplet {
 	}
 
 	public void setup() {
-		size(width, height);
-		container = new ApplicationContainer(this);
-		hBox = new HBox();
-		container.add(hBox);
-		hBox.add(new Widget() {
-			int color = 0xFFFF0000;
-
-			public void draw() {
-				app().fill(color);
-				rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-			}
-
-			public void onClick(int x, int y) {
-				color = ((int)(Math.random() * (1 << 24))) | 0xFF000000;
-			}
-		}, 200);
-		hBox.add(new Widget() {
-			int color = 0xFFFF8000;
-
-			public void draw() {
-				app().fill(color);
-				rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-			}
-
-			public void onClick(int x, int y) {
-				color = ((int)(Math.random() * (1 << 24))) | 0xFF000000;
-			}
-		}, 300);
-		hBox.add(new Widget() {
-			int color = 0xFFFF8000;
-
-			public void draw() {
-				app().fill(color);
-				rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-			}
-
-			public void mouseDown(int x, int y) {
-				color = ((int)(Math.random() * (1 << 24))) | 0xFF000000;
+		addMouseWheelListener(new java.awt.event.MouseWheelListener() { 
+			public void mouseWheelMoved(java.awt.event.MouseWheelEvent e) { 
+				wheelRotation += e.getWheelRotation();
 			}
 		});
+		size(width, height);
 	}
 
 	public void draw() {
+		dispatcher.update(mousePressed, mouseX, mouseY, wheelRotation);
 		container.update();
-		container.mouseOn(mouseX, mouseY);
-		if (mousePressed == true) {
-			container.mouseDown(mouseX, mouseY);
-		}
-		else {
-			container.mouseUp(mouseX, mouseY);
-		}
+		wheelRotation = 0;
+	}
+
+	public EventDispatcher mouse() {
+		return dispatcher;
 	}
 
 	public int getWidth() {
