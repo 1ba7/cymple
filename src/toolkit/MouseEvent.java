@@ -38,11 +38,11 @@ public class MouseEvent {
 	}
 
 	public double getRelativeAngle() {
-		return Math.atan2(getRelativeX(), getRelativeY());
+		return getAngle(getRelativeX(), getRelativeY());
 	}
 
 	public double getRelativeMagnitude() {
-		return Math.sqrt(Math.pow(getRelativeX(), 2) + Math.pow(getRelativeY(), 2));
+		return getMagnitude(getRelativeX(), getRelativeY());
 	}
 
 	public int getCurrentX() {
@@ -51,6 +51,22 @@ public class MouseEvent {
 
 	public int getCurrentY() {
 		return widget.getApp().mouseY;
+	}
+
+	public int getCurrentRelativeX() {
+		return getCurrentX() - getCenterX();
+	}
+
+	public int getCurrentRelativeY() {
+		return getCurrentY() - getCenterY();
+	}
+
+	public double getCurrentRelativeAngle() {
+		return getAngle(getCurrentRelativeX(), getCurrentRelativeY());
+	}
+
+	public double getCurrentRelativeMagnitude() {
+		return getMagnitude(getCurrentRelativeX(), getCurrentRelativeY());
 	}
 
 	public int getDragX() {
@@ -62,11 +78,21 @@ public class MouseEvent {
 	}
 
 	public double getDragAngle() {
-		return Math.atan2(getDragY(), getDragX());
+		return getAngle(getDragX(), getDragY());
 	}
 
 	public double getDragMagnitude() {
-		return Math.sqrt(Math.pow(getDragX(), 2) + Math.pow(getDragY(), 2));
+		return getMagnitude(getDragX(), getDragY());
+	}
+
+	private double getAngle(int x, int y) {
+		double angle = Math.atan2(y, x) + Math.PI / 2;
+		while (angle < 0) angle += Math.PI * 2;
+		return angle % (Math.PI * 2);
+	}
+
+	private double getMagnitude(int x, int y) {
+		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	}
 
 	public int getWheelRotation() {
