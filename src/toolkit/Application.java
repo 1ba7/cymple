@@ -1,12 +1,14 @@
 package cymple.toolkit;
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class Application extends PApplet {
-	private ApplicationContainer container;
+	protected ApplicationContainer container;
 	private int width;
 	private int height;
 	private int wheelRotation;
 	private EventDispatcher dispatcher;
+	private PFont font;
 
 	public Application(int width, int height) {
 		this.width = width;
@@ -14,6 +16,7 @@ public class Application extends PApplet {
 		this.container = new ApplicationContainer(this);
 		this.wheelRotation = 0;
 		this.dispatcher = new EventDispatcher();
+		this.font = loadFont("default.vlw");
 	}
 
 	public Application() {
@@ -45,6 +48,10 @@ public class Application extends PApplet {
 
 	public int getHeight() {
 		return height;
+	}
+
+	public PFont defaultFont() {
+		return font;
 	}
 
 	public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package cymple.toolkit;
 
-public abstract class Widget {
+public class Widget {
 	protected Application app;
 	private Container parent;
 	private int x;
@@ -20,7 +20,7 @@ public abstract class Widget {
 		}
 	}
 
-	abstract void draw();
+	public void draw() {}
 
 	public boolean visible() {
 		return parent.isChildVisible(this);
