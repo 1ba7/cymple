@@ -12,6 +12,8 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 	private GraphData graphData;
 	private ChartData chartData;
 	private int update;
+	private String status;
+	volatile private double complete;
 	private Set<User> selectedUsers;
 	private Set<Track> selectedTracks;
 
@@ -29,8 +31,16 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 		this.seeker = seeker;
 	}
 
-	public String rangeToString() {
-		return rangeToString(rangeStart(), rangeFinish());
+	public String startString() {
+		return startString(rangeStart(), rangeFinish());
+	}
+
+	public String finishString() {
+		return startString(rangeStart(), rangeFinish());
+	}
+
+	public String rangeString() {
+		return rangeString(rangeStart(), rangeFinish());
 	}
 
 	public GraphData getGraphData() {
@@ -54,6 +64,19 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 		}
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public double getComplete() {
+		return complete;
+	}
+
+	protected void resetStatus() {
+		status = "Visualising " + size() + " listens " + rangeString();
+		complete = 0;
+	}
+
 	public synchronized void run() {
 		while(true) {
 			try {
@@ -69,7 +92,10 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 	}
 
 	private void updateGraph() {
-		
+		status = "Updating graph...";
+		complete = 0.5;
+		graphData = new GraphData(total, seeker.getResolution());
+		resetStatus();
 	}
 
 	private void updateChart() {
@@ -88,6 +114,9 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 
 		long listens;
 		String key;
+		status = "Updating chart...";
+		complete = 0;
+		double offset = 1.0 / (selectedUsers.size() * selectedTracks.size());
 		for (User user: selectedUsers) {
 			for (Track track: selectedTracks) {
 				listens = getListens(user, track, start, finish);
@@ -100,23 +129,27 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 					(albums.get(key) == null ? 0 : albums.get(key)) + listens);
 				tracks.put(key = track.toString(),
 					(tracks.get(key) == null ? 0 : tracks.get(key)) + listens);
+				complete += offset;
 			}
 		}
-		this.chartData = new ChartData(map);
+		chartData = new ChartData(map);
+		resetStatus();
 	}
 
 	private long getListens(User user, Track track, int start, int finish) {
 		try {
 			int offset = headerSize + ((userCount + artistCount + albumCount +
 				trackCount + userCount * user.id() + track.id()) << 13);
-			file.seek(offset + (finish << 3));
-			long max = file.readLong();
-			if (start == 0) {
-				return max;
-			}
-			else {
-				file.seek(offset + ((start - 1) << 3));
-				return max - file.readLong();
+			synchronized(file) {
+				file.seek(offset + (finish << 3));
+				long max = file.readLong();
+				if (start == 0) {
+					return max;
+				}
+				else {
+					file.seek(offset + ((start - 1) << 3));
+					return max - file.readLong();
+				}
 			}
 		}
 		catch (IOException e) {

@@ -113,10 +113,13 @@ public class Header {
 		this.tracks = getTracksFromAlbums(this.albums);
 	}
 
+	private short readShort(byte[] bytes, int i) {
+		return (short)(((bytes[i] & 255) << 8) + (bytes[i + 1] & 255));
+	}
+
 	private String readString(byte[] bytes, int index) {
 		try {
-			int length = bytes[index] & 255;
-			return new String(bytes, index + 1, length, "UTF8");
+			return new String(bytes, index + 1, bytes[index] & 255, "UTF8");
 		}
 		catch (java.io.UnsupportedEncodingException e) {
 			throw new InvalidFileFormatException(e);
@@ -220,29 +223,38 @@ public class Header {
 		return minTime + (long)(time * (maxTime - minTime) / 1024.0);
 	}
 
-	protected String rangeToString(int start, int finish) {
-		return rangeToString(toLongTime(start), toLongTime(finish));
+	protected String startString(int start, int finish) {
+		return startString(toLongTime(start), toLongTime(finish));
 	}
 
-	private short readShort(byte[] bytes, int i) {
-		return (short)(((bytes[i] & 255) << 8) + (bytes[i + 1] & 255));
+	protected String finishString(int start, int finish) {
+		return finishString(toLongTime(start), toLongTime(finish));
 	}
 
-	public String rangeToString(long start, long finish) {
+	public String startString(long start, long finish) {
+		return getFormat(start, finish).format(new Date(start));
+	}
+
+	public String finishString(long start, long finish) {
+		return getFormat(start, finish).format(new Date(finish));
+	}
+
+	public String rangeString(long start, long finish) {
+		return "from " + getFormat(start, finish).format(new Date(start)) +
+			" to " + getFormat(start, finish).format(new Date(finish));
+	}
+
+	private SimpleDateFormat getFormat(long start, long finish) {
 		long difference = finish - start;
-		SimpleDateFormat format;
 
 		if (difference < 86400000L) {
-			format = new SimpleDateFormat("MMMM dd, kk:mm, yyyy");
+			return new SimpleDateFormat("MMMM dd, kk:mm, yyyy");
 		}
 		else if (difference < 15552000000L) {
-			format = new SimpleDateFormat("MMMM dd, yyyy");
+			return new SimpleDateFormat("MMMM dd, yyyy");
 		}
 		else {
-			format = new SimpleDateFormat("MMMM yyyy");
+			return new SimpleDateFormat("MMMM yyyy");
 		}
-
-		return "from " + format.format(new Date(start)) + " to " +
-			format.format(new Date(finish));
 	}
 }
