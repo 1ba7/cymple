@@ -51,7 +51,35 @@ public class Cymple extends Application {
 			}
 		}, 200);
 		hbox3.addLeft(new TestWidget(), 200);
-		hbox1.addRight(new TestWidget(), 200);
+		hbox1.addRight(new TestWidget() {
+			public User[] users = data.getUsers();
+			public Album[] albums = data.getAlbumsByArtists(data.getArtists());
+			public short user = 0;
+
+			public void draw() {
+				app.fill(0xFFFF9900);
+				app.rect(getX(), getY(), getWidth(), getHeight());
+				app.textFont(app.defaultFont());
+				app.fill(0xFF0000FF);
+				app.text(users[user].toString(), getX() + getWidth() / 2, getY() + getHeight() / 2);
+			}
+
+			public void onScrollDown(MouseEvent e) {
+				user += e.getWheelRotation();
+				user %= data.userCount();
+			}
+
+			public void onScrollUp(MouseEvent e) {
+				user -= e.getWheelRotation();
+				while (user < 0) user += data.userCount();
+				user %= data.userCount();
+			}
+
+			public void onClick(MouseEvent e) {
+				data.query(new User[] {users[user]}, albums);
+				data.update();
+			}
+		}, 200);
 		hbox2.addRight(new TestWidget(), 200);
 		hbox3.addRight(new TestWidget(), 200);
 		hbox1.add(new TestWidget());
@@ -65,10 +93,10 @@ public class Cymple extends Application {
 				ChartData cd = data.getChartData();
 				for (int i = 0; i < 12; i++) {
 					app.fill(0x80000099 + (i % 2 == 0 ? 0 : 0x333333));
-					app.rect(getX(), getY() + (18 * i) - 14, (float)(getWidth() * cd.getRelative(i)), 18);
+					app.rect(getX(), getY() + (18 * i), (float)(getWidth() * cd.getRelative(i)), 18);
 					app.fill(0xFF000000);
 					app.textFont(app.defaultFont());
-					app.text(cd.getName(i) + ": " + cd.getAbsolute(i), getX(), getY() + 18 * i);
+					app.text(cd.getName(i) + ": " + cd.getAbsolute(i), getX() + 5, getY() + 18 * i + 14);
 				}
 			}
 		});

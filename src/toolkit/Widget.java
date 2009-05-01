@@ -1,7 +1,8 @@
 package cymple.toolkit;
+import processing.core.PGraphics;
 
-public class Widget {
-	protected Application app;
+public abstract class Widget {
+	private Application app;
 	private Container parent;
 	private int x;
 	private int y;
@@ -13,38 +14,37 @@ public class Widget {
 		this.parent = null;
 	}
 
-	public void update() {
-		app.mouse().sendEvents(this);
-		if (visible()) {
-			draw();
-		}
-	}
-
-	public void draw() {}
-
-	public boolean visible() {
-		return parent.isChildVisible(this);
-	}
-
-	protected void setX(int x) {
-		this.x = x;
-	}
-
-	protected void setY(int y) {
-		this.y = y;
-	}
-
 	protected void setParent(Container parent) {
 		this.parent = parent;
 		this.app = parent.getApp();
 	}
 
-	protected void setWidth(int width) {
-		this.width = width;
+	protected void setPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
-	protected void setHeight(int height) {
+	protected void setSize(int width, int height) {
+		this.width = width;
 		this.height = height;
+	}
+
+	public void update() {
+		app.mouse().sendEvents(this);
+	}
+
+	public void draw(Canvas canvas) {}
+
+	public boolean visible() {
+		return parent.isChildVisible(this);
+	}
+
+	public int getAbsoluteX() {
+		return x + parent.getAbsoluteX();
+	}
+
+	public int getAbsoluteY() {
+		return y + parent.getAbsoluteY();
 	}
 
 	public int getX() {
@@ -64,11 +64,22 @@ public class Widget {
 	}
 
 	public boolean contains(int x, int y) {
-		return visible() && x >= this.x && x < (this.x + width) && y >= this.y && y < (this.y + height);
+		return visible() &&
+			x >= getAbsoluteX() && x < (getAbsoluteX() + width) &&
+			y >= getAbsoluteY() && y < (getAbsoluteY() + height) &&
+			parent.contains(x, y);
 	}
 
 	public Application getApp() {
 		return app;
+	}
+
+	public PFont defaultFont() {
+		return app.defaultFont();
+	}
+
+	public PFont boldFont() {
+		return app.boldFont();
 	}
 
 	public void onMouseOver(MouseEvent e) {}

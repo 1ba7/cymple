@@ -13,7 +13,7 @@ public class VBox extends Container {
 	public void addTop(Widget child, int height) {
 		children.add(child);
 		child.setParent(this);
-		child.setX(getX());
+		child.setX(0);
 		child.setY(usedTop);
 		child.setWidth(getWidth());
 		child.setHeight(height);
@@ -23,7 +23,7 @@ public class VBox extends Container {
 	public void addBottom(Widget child, int height) {
 		children.add(child);
 		child.setParent(this);
-		child.setX(getX());
+		child.setX(0);
 		child.setY(getHeight() - usedBottom - height);
 		child.setWidth(getWidth());
 		child.setHeight(height);

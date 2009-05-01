@@ -1,6 +1,6 @@
 package cymple.toolkit;
 
-public class EventDispatcher {
+public class Mouse {
 	private boolean mouseDown;
 	private boolean oldMouseDown;
 	private int clickX;
@@ -11,7 +11,7 @@ public class EventDispatcher {
 	private int oldY;
 	private int wheelRotation;
 
-	protected EventDispatcher() {
+	protected Mouse() {
 		this.mouseDown = false;
 		this.oldMouseDown = false;
 		this.clickX = 0;
@@ -84,6 +84,10 @@ public class EventDispatcher {
 
 	public boolean clickEvents(Widget widget) {
 		return onClick(widget) || onDrag(widget);
+	}
+
+	public boolean activity(Widget widget) {
+		return nonClickEvents(widget) || clickEvents(widget);
 	}
 
 	public void sendEvents(Widget widget) {

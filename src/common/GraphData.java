@@ -1,31 +1,34 @@
 package cymple.common;
 
-// This is a data structure which can be used directly to draw a graph.
-public class GraphData extends SeekableData {
-	// An array of points that describe the graph.
+public class GraphData {
 	private double[] samples;
-	// The highest possible point in the dataset at the current resolution.
-	private int maximum;
-	// Initiales a GraphData object.
-	public GraphData(double position, double resolution, double[] samples, int maximum) {
-		super(position, resolution);
-		this.samples = samples;
-		this.maximum = maximum;
+	private long maximum = 0;
+
+	public GraphData(ListenVector listens, double resolution) {
+		samples = new double[(int)(32 / resolution)];
+		long maybe;
+		double offset = 1024 / 32 * resolution;
+		for (int i = 0; i < samples.length;) {
+			maybe = listens.between((int)(i++ * offset), (int)(i * offset));
+			if (maybe > maximum) {
+				maximum = maybe;
+			}
+		}
+		for (int i = 0; i < samples.length;) {
+			maybe = listens.between((int)(i++ * offset), (int)(i * offset));
+			samples[i] = (double)maybe / maximum;
+		}
 	}
 
-	// The sample rate at the time this was created.
-	public int getSampleRate() {
-		return samples.length;
-	}
-
-	// Returns the (n - 1)th sample.
-	public double getSample(int n) {
+	public double sample(int n) {
 		return samples[n];
 	}
 
-	// Returns the maximum possible point in the dataset. This should be
-	// displayed on the Y axis of the graph.
-	public int getMaximum() {
+	public long maximum() {
 		return maximum;
+	}
+
+	public int size() {
+		return samples.length;
 	}
 }

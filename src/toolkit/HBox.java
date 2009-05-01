@@ -14,7 +14,7 @@ public class HBox extends Container {
 		children.add(child);
 		child.setParent(this);
 		child.setX(usedLeft);
-		child.setY(getY());
+		child.setY(0);
 		child.setWidth(width);
 		child.setHeight(getHeight());
 		usedLeft += width;
@@ -24,7 +24,7 @@ public class HBox extends Container {
 		children.add(child);
 		child.setParent(this);
 		child.setX(getWidth() - usedRight - width);
-		child.setY(getY());
+		child.setY(0);
 		child.setWidth(width);
 		child.setHeight(getHeight());
 		usedRight += width;

@@ -1,7 +1,8 @@
 package cymple.toolkit;
 import cymple.common.Seekable;
+import cymple.common.Seeker;
 
-public class Seeker extends Widget {
+public class Seeker extends Widget implements Seeker {
 	private Seekable seekable;
 	private double position;
 	private double resolution;

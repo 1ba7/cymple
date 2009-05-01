@@ -17,10 +17,8 @@ public abstract class Container extends Widget {
 			children.add(child);
 		}
 		child.setParent(this);
-		child.setX(getX());
-		child.setY(getY());
-		child.setWidth(getWidth());
-		child.setHeight(getHeight());
+		child.setPosition(0, 0);
+		child.setSize(getWidth(), getHeight());
 	}
 	
 	public boolean isChildVisible(Widget child) {
@@ -34,5 +32,12 @@ public abstract class Container extends Widget {
 		}
 	}
 	
-	public void draw() {}
+	public void draw(Canvas canvas) {
+		for (Widget child: children) {
+			canvas.pushMatrix();
+			canvas.transform(child.getX(), child.getY());
+			child.draw(canvas);
+			canvas.popMatrix();
+		}
+	}
 }

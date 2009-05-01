@@ -33,4 +33,4 @@ end
 FileUtils.cd('..')
 build('common')
 build('data')
-build('toolkit')
+#build('toolkit')
