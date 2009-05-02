@@ -1,16 +1,18 @@
 package cymple.data;
+import cymple.common.Scale;
 import cymple.common.SelectItemData;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Header {
 	protected RandomAccessFile file;
 	protected int headerSize;
 
-	protected long minTime;
-	protected long maxTime;
+	protected Scale scale;
 
 	protected int userCount;
 	protected int artistCount;
@@ -30,8 +32,7 @@ public class Header {
 			}
 			
 			headerSize = file.readInt();
-			minTime = file.readLong();
-			maxTime = file.readLong();
+			scale = new Scale(file.readLong(), file.readLong());
 
 			userCount = file.readUnsignedShort();
 			artistCount = file.readUnsignedShort();
@@ -213,48 +214,5 @@ public class Header {
 		}
 
 		return result;
-	}
-
-	protected int toIntTime(long time) {
-		return (int)((time - minTime) * 1024.0 / (maxTime - minTime));
-	}
-
-	protected long toLongTime(int time) {
-		return minTime + (long)(time * (maxTime - minTime) / 1024.0);
-	}
-
-	protected String startString(int start, int finish) {
-		return startString(toLongTime(start), toLongTime(finish));
-	}
-
-	protected String finishString(int start, int finish) {
-		return finishString(toLongTime(start), toLongTime(finish));
-	}
-
-	public String startString(long start, long finish) {
-		return getFormat(start, finish).format(new Date(start));
-	}
-
-	public String finishString(long start, long finish) {
-		return getFormat(start, finish).format(new Date(finish));
-	}
-
-	public String rangeString(long start, long finish) {
-		return "from " + getFormat(start, finish).format(new Date(start)) +
-			" to " + getFormat(start, finish).format(new Date(finish));
-	}
-
-	private SimpleDateFormat getFormat(long start, long finish) {
-		long difference = finish - start;
-
-		if (difference < 86400000L) {
-			return new SimpleDateFormat("MMMM dd, kk:mm, yyyy");
-		}
-		else if (difference < 15552000000L) {
-			return new SimpleDateFormat("MMMM dd, yyyy");
-		}
-		else {
-			return new SimpleDateFormat("MMMM yyyy");
-		}
 	}
 }

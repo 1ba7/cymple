@@ -2,9 +2,9 @@ package cymple.data;
 import cymple.common.*;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 public class Data extends Header implements Graphable, Chartable, Status, Runnable {
 	private ListenVector total;
@@ -31,16 +31,8 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 		this.seeker = seeker;
 	}
 
-	public String startString() {
-		return startString(rangeStart(), rangeFinish());
-	}
-
-	public String finishString() {
-		return startString(rangeStart(), rangeFinish());
-	}
-
-	public String rangeString() {
-		return rangeString(rangeStart(), rangeFinish());
+	public Scale getScale() {
+		return scale;
 	}
 
 	public GraphData getGraphData() {
@@ -99,8 +91,8 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 	}
 
 	private void updateChart() {
-		int start = rangeStart();
-		int finish = rangeFinish();
+		int start = scale.startInt(seeker.getPosition(), seeker.getResolution());
+		int finish = scale.finishInt(seeker.getPosition(), seeker.getResolution());
 		Map<String, Long> users, artists, albums, tracks;
 
 		Map<ChartKey, Map<String, Long>> map;
@@ -265,17 +257,19 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 		}
 	}
 
-	public long size() {
-		return total.between(rangeStart(), rangeFinish());
+	private long size() {
+		return total.between(startInt(), finishInt());
 	}
 
-	protected int rangeStart() {
-		return (int)(1023.999999 * seeker.getPosition() *
-			(1 - seeker.getResolution()));
-	} 
+	private int startInt() {
+		return scale.startInt(seeker.getPosition(), seeker.getResolution());
+	}
 
-	protected int rangeFinish() {
-		return (int)(1023.999999 * ((seeker.getPosition() *
-			(1 - seeker.getResolution())) + seeker.getResolution()));
+	private int finishInt() {
+		return scale.finishInt(seeker.getPosition(), seeker.getResolution());
+	}
+
+	private String rangeString() {
+		return scale.rangeString(seeker.getPosition(), seeker.getResolution());
 	}
 }
