@@ -15,7 +15,7 @@ public class Cymple extends Application {
 	final private Data data;
 
 	public Cymple() {
-		this("../tmp/huge.bin");
+		this("../tmp/cymple.bin");
 	}
 
 	public Cymple(String path) {

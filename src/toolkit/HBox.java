@@ -1,7 +1,7 @@
 package cymple.toolkit;
 
 public class HBox extends Container {
-	private int width;
+	private int internalWidth;
 	private int defaultWidth;
 
 	public HBox() {
@@ -10,7 +10,7 @@ public class HBox extends Container {
 
 	public HBox(int defaultWidth) {
 		super();
-		this.width = 0;
+		this.internalWidth = 0;
 		this.defaultWidth = defaultWidth;
 	}
 
@@ -21,12 +21,8 @@ public class HBox extends Container {
 	public void add(Widget child, int widgetWidth) {
 		children.add(child);
 		child.setParent(this);
-		child.setPosition(width, 0);
+		child.setPosition(internalWidth, 0);
 		child.setSize(widgetWidth, getHeight());
-		width += widgetWidth;
-	}
-
-	public void setSize(int width, int height) {
-		super.setSize(this.width, height);
+		internalWidth += widgetWidth;
 	}
 }

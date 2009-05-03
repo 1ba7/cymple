@@ -23,6 +23,7 @@ public class Application extends PApplet implements Canvas, MouseWheelListener {
 	}
 
 	public void setup() {
+		frameRate(20);
 		size(width, height);
 	}
 
@@ -55,8 +56,8 @@ public class Application extends PApplet implements Canvas, MouseWheelListener {
 		mouse.mousePressed(e);
 	}
 
-	public void mouseClicked(java.awt.event.MouseEvent e) {
-		super.mouseClicked(e);
+	public void mouseReleased(java.awt.event.MouseEvent e) {
+		super.mouseReleased(e);
 		mouse.mouseReleased(e);
 	}
 

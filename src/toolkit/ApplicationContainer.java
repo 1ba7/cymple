@@ -8,11 +8,11 @@ public class ApplicationContainer extends Container {
 		setSize(app.getWidth(), app.getHeight());
 	}
 
-	public int getX() {
+	public int getAbsoluteX() {
 		return 0;
 	}
 
-	public int getY() {
+	public int getAbsoluteY() {
 		return 0;
 	}
 

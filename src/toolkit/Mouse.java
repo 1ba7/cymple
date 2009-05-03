@@ -25,26 +25,13 @@ public class Mouse {
 		this.scroll = 0;
 	}
 
-	protected synchronized void update(boolean mouseDown, int x, int y, int scroll) {
-		if (mouseDown && !oldMouseDown) {
-			this.clickX = x;
-			this.clickY = y;
-		}
-		this.oldMouseDown = this.mouseDown;
-		this.mouseDown = mouseDown;
-		this.oldX = this.x;
-		this.oldY = this.y;
-		this.x = x;
-		this.y = y;
-		this.scroll = scroll;
-	}
-
 	private void updatePosition(java.awt.event.MouseEvent e) {
 		scroll = 0;
 		oldX = x;
 		oldY = y;
 		x = e.getX();
 		y = e.getY();
+		oldMouseDown = mouseDown;
 	}
 
 	protected synchronized void mousePressed(java.awt.event.MouseEvent e) {
@@ -116,6 +103,12 @@ public class Mouse {
 
 	public synchronized void sendEvents(Widget widget) {
 		Event e = new Event(widget, x, y, clickX, clickY, scroll);
-		
+		if (onMouseOver(widget)) widget.onMouseOver(e);
+		if (onMouseOut(widget)) widget.onMouseOut(e);
+		if (onMouseDown(widget)) widget.onMouseDown(e);
+		if (onMouseUp(widget)) widget.onMouseUp(e);
+		if (onClick(widget)) widget.onClick(e);
+		if (onDrag(widget)) widget.onDrag(e);
+		if (onScroll(widget)) widget.onScroll(e);
 	}
 }

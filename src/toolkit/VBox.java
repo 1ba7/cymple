@@ -1,7 +1,7 @@
 package cymple.toolkit;
 
 public class VBox extends Container {
-	private int height;
+	private int internalHeight;
 	private int defaultHeight;
 
 	public VBox() {
@@ -10,7 +10,7 @@ public class VBox extends Container {
 
 	public VBox(int defaultHeight) {
 		super();
-		this.height = 0;
+		this.internalHeight = 0;
 		this.defaultHeight = defaultHeight;
 	}
 
@@ -21,12 +21,8 @@ public class VBox extends Container {
 	public void add(Widget child, int widgetHeight) {
 		children.add(child);
 		child.setParent(this);
-		child.setPosition(0, height);
+		child.setPosition(0, internalHeight);
 		child.setSize(getWidth(), widgetHeight);
-		height += widgetHeight;
-	}
-
-	public void setSize(int width, int height) {
-		super.setSize(width, this.height);
+		internalHeight += widgetHeight;
 	}
 }

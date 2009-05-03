@@ -51,6 +51,7 @@ public class SeekCircle extends Widget implements Seeker {
 	public void onScroll(Event e) {
 		resolution += (e.getScroll() * 2 * Math.PI / 360);
 		if (resolution > 1.0) resolution = 1.0;
+		if (resolution < (1.0 / 1024)) resolution = 1.0 / 1024;
 		seekable.update();
 	}
 }
