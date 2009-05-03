@@ -5,18 +5,16 @@ public class GraphData {
 	private long maximum = 0;
 
 	public GraphData(ListenVector listens, double resolution) {
-		samples = new double[(int)(32 / resolution)];
-		long maybe;
-		double offset = 1024 / 32 * resolution;
+		// Units per samples
+		int ups = (int)(32 * resolution < 1 ? 1 : 32 * resolution);
+		samples = new double[1024 / ups];
+		long absolute;
 		for (int i = 0; i < samples.length;) {
-			maybe = listens.between((int)(i++ * offset), (int)(i * offset));
-			if (maybe > maximum) {
-				maximum = maybe;
-			}
+			absolute = listens.between(i++ * ups, i * ups);
+			maximum = absolute > maximum ? absolute : maximum;
 		}
 		for (int i = 0; i < samples.length;) {
-			maybe = listens.between((int)(i++ * offset), (int)(i * offset));
-			samples[i] = (double)maybe / maximum;
+			samples[i] = listens.between(i++ * ups, i * ups) / (double)maximum;
 		}
 	}
 

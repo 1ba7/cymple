@@ -1,4 +1,5 @@
 package cymple.common;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -104,12 +105,17 @@ public class Scale {
 			finishString(position, resolution);
 	}
 
-	protected int toIntTime(long time) {
+	public int toIntTime(long time) {
 		return asInt((double)(time - start) / (finish - start));
 	}
 
-	protected long toLongTime(int time) {
+	public long toLongTime(int time) {
 		return asLong(time / 1023.99999);
+	}
+
+	public String number(long number) {
+		return (Math.log10(number) > 8 ? new DecimalFormat("0.###E0") :
+			new DecimalFormat("#,##0")).format(number);
 	}
 
 	private SimpleDateFormat format(long start, long finish) {

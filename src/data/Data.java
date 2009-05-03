@@ -21,10 +21,14 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 		super(filename);
 		total = readListenVector();
 		selectedUsers = new HashSet<User>();
+		for (User user: users) {
+			selectedUsers.add(user);
+		}
 		selectedTracks = new HashSet<Track>();
+		for (Track track: tracks) {
+			selectedTracks.add(track);
+		}
 		(new Thread(this)).start();
-		this.update();
-		Map<String, Integer> users, artists, albums, tracks;
 	}
 
 	public void connect(Seeker seeker) {
@@ -154,7 +158,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			total.add(readListenVector(user));
 			selectedUsers.add(user);
 		}
-		update();
 	}
 
 	public void add(Artist artist) {
@@ -164,7 +167,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 				selectedTracks.add(track);
 			}
 		}
-		update();
 	}
 
 	public void add(Album album) {
@@ -174,7 +176,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 				selectedTracks.add(track);
 			}
 		}
-		update();
 	}
 
 	public void add(Track track) {
@@ -182,7 +183,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			total.add(readListenVector(track));
 			selectedTracks.add(track);
 		}
-		update();
 	}
 
 	public void remove(User user) {
@@ -190,7 +190,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			total.subtract(readListenVector(user));
 			selectedUsers.remove(user);
 		}
-		update();
 	}
 
 	public void remove(Artist artist) {
@@ -200,7 +199,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 				selectedTracks.remove(track);
 			}
 		}
-		update();
 	}
 
 	public void remove(Album album) {
@@ -210,7 +208,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 				selectedTracks.remove(track);
 			}
 		}
-		update();
 	}
 
 	public void remove(Track track) {
@@ -218,7 +215,6 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			total.subtract(readListenVector(track));
 			selectedTracks.remove(track);
 		}
-		update();
 	}
 
 	protected ListenVector readListenVector() {

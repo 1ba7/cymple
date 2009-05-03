@@ -30,6 +30,7 @@ public class GenerateHeader {
 		artists = new TreeMap<String, Map<String, Set<String>>>();
 
 		String line, user, artist, album, track;
+		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss Z yyyy", Locale.ENGLISH);
 		long time;
 		while ((line = input.readLine()) != null) {
 			String[] tokens = line.trim().split(",");
@@ -37,7 +38,6 @@ public class GenerateHeader {
 			artist = tokens[1].intern();
 			album = tokens[2].intern();
 			track = tokens[3].intern();
-			SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss Z yyyy", Locale.ENGLISH);
 			time = sdf.parse(tokens[4]).getTime();
 
 			users.add(user);

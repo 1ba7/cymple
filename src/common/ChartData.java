@@ -1,5 +1,7 @@
 package cymple.common;
+import java.util.Collection;
 import java.util.Map;
+import java.util.HashMap;
 
 public class ChartData {
 	private Map<ChartKey, String[]> names;
@@ -7,18 +9,22 @@ public class ChartData {
 	private Map<ChartKey, double[]> relatives;
 
 	public ChartData(Map<ChartKey, Map<String, Long>> map) {
+		names = new HashMap<ChartKey, String[]>();
+		absolutes = new HashMap<ChartKey, long[]>();
+		relatives = new HashMap<ChartKey, double[]>();
 		for (ChartKey key: map.keySet()) {
 			int size = map.get(key).size();
-			names.put(key, (String[])map.get(key).keySet().toArray());
+			names.put(key, convert(map.get(key).keySet()));
 			absolutes.put(key, new long[size]);
 			long maximum = 0;
-			Long[] listensArray = (Long[])map.get(key).values().toArray();
+			long[] listensArray = convert(map.get(key).values());
 			for (int i = 0; i < size; i++) {
 				absolutes.get(key)[i] = listensArray[i];
-				if (absolutes.get(key)[i] > maximum) {
-					maximum = absolutes.get(key)[i];
+				if (listensArray[i] > maximum) {
+					maximum = listensArray[i];
 				}
 			}
+			sort(absolutes.get(key), names.get(key));
 			relatives.put(key, new double[size]);
 			for (int i = 0; i < size; i++) {
 				relatives.get(key)[i] = (double)absolutes.get(key)[i] / maximum;
@@ -27,20 +33,41 @@ public class ChartData {
 	}
 
 	public String getName(ChartKey key, int n) {
-		return names.get(key)[n];
+		return names.get(key)[size(key) - n - 1];
 	}
 
 	public double getRelative(ChartKey key, int n) {
-		return relatives.get(key)[n];
+		return relatives.get(key)[size(key) - n - 1];
 	}
 
 	public long getAbsolute(ChartKey key, int n) {
-		return absolutes.get(key)[n];
+		return absolutes.get(key)[size(key) - n - 1];
 	}
 
 	public int size(ChartKey key) {
 		return absolutes.get(key).length;
 	}
+
+	private long[] convert(Collection<Long> longs) {
+		long[] result = new long[longs.size()];
+		int i = 0;
+		for (Long l: longs) {
+			result[i] = (long)l;
+			i++;
+		}
+		return result;
+	}
+
+	private String[] convert(Collection<String> strings) {
+		String[] result = new String[strings.size()];
+		int i = 0;
+		for (String string: strings) {
+			result[i] = string;
+			i++;
+		}
+		return result;
+	}
+
 	private void sort(long absolutes[], String names[]) {
 		sort(absolutes, names, 0, absolutes.length);
 	}

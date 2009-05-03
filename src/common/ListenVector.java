@@ -16,6 +16,10 @@ public class ListenVector {
 		}
 	}
 
+	public ListenVector(long[] listens) {
+		this.listens = listens;
+	}
+
 	public void add(ListenVector other) {
 		for (int i = 0; i < 1024; i++) {
 			listens[i] += other.get(i);
@@ -28,8 +32,14 @@ public class ListenVector {
 		}
 	}
 
+	public void normalize() {
+		for (int i = 1; i < 1024; i++) {
+			listens[i] += listens[i - 1];
+		}
+	}
+
 	public long between(int start, int finish) {
-		return listens[finish > 1023 ? 1023: finish] -
+		return (finish == 0 ? 0 : listens[finish - 1]) -
 			(start == 0 ? 0 : listens[start - 1]);
 	}
 
