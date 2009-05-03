@@ -1,31 +1,33 @@
 package cymple.toolkit;
 import processing.core.PApplet;
 import processing.core.PFont;
-import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 public class Application extends PApplet implements Canvas, MouseWheelListener {
-	private ApplicationContainer container;
+	protected ApplicationContainer container;
 	private PFont defaultFont;
 	private PFont boldFont;
 	private Mouse mouse;
 	private int width;
 	private int height;
-	private int wheelRotation = 0;
 
 	public Application(int width, int height) {
+		addMouseWheelListener(this);
 		this.width = width;
 		this.height = height;
-		addMouseWheelListener(this);
-		this.buffer = createGraphics(width, height);
 		this.defaultFont = loadFont("default.vlw");
 		this.boldFont = loadFont("bold.vlw");
-		this.mouse = new Mouse();
 		this.container = new ApplicationContainer(this);
+		this.mouse = new Mouse(container);
+		container.mouse = mouse;
 	}
 
 	public void setup() {
 		size(width, height);
+	}
+
+	public void draw() {
+		container.draw(this);
 	}
 
 	public int getWidth() {
@@ -36,15 +38,40 @@ public class Application extends PApplet implements Canvas, MouseWheelListener {
 		return height;
 	}
 
-	public void draw() {
-		container.draw(this);
+	public PFont defaultFont() {
+		return defaultFont;
 	}
 
-	public void update() {
+	public PFont boldFont() {
+		return boldFont;
 	}
 
-	public Mouse mouse() {
+	public Mouse getMouse() {
 		return mouse;
+	}
+
+	public void mousePressed(java.awt.event.MouseEvent e) {
+		super.mousePressed(e);
+		mouse.mousePressed(e);
+	}
+
+	public void mouseClicked(java.awt.event.MouseEvent e) {
+		super.mouseClicked(e);
+		mouse.mouseReleased(e);
+	}
+
+	public void mouseMoved(java.awt.event.MouseEvent e) {
+		super.mouseMoved(e);
+		mouse.mouseMoved(e);
+	}
+
+	public void mouseDragged(java.awt.event.MouseEvent e) {
+		super.mouseDragged(e);
+		mouse.mouseMoved(e);
+	}
+
+	public void mouseWheelMoved(java.awt.event.MouseWheelEvent e) {
+		mouse.mouseScrolled(e);
 	}
 
 	public static void main(String[] args) {

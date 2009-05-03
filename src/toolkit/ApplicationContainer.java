@@ -4,10 +4,8 @@ public class ApplicationContainer extends Container {
 	public ApplicationContainer(Application app) {
 		super();
 		this.app = app;
-		setX(0);
-		setY(0);
-		setWidth(app.getWidth());
-		setHeight(app.getHeight());
+		setPosition(0, 0);
+		setSize(app.getWidth(), app.getHeight());
 	}
 
 	public int getX() {

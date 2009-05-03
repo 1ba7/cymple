@@ -3,104 +3,90 @@ import cymple.toolkit.*;
 import cymple.common.*;
 
 class TestWidget extends Widget {
-	public void draw() {
-		app.noStroke();
-		app.fill(0xFFFFFFFF);
-		app.rect(getX(), getY(), getWidth(), getHeight());
+	public void draw(Canvas canvas) {
+		canvas.noStroke();
+		canvas.fill(0xFFFFFFFF);
+		canvas.rect(0, 0, getWidth(), getHeight());
 	}
 }
 
 public class Cymple extends Application {
-	private Data data;
+	private ChartKey key;
+	final private Data data;
 
 	public Cymple() {
+		this("../tmp/huge.bin");
+	}
+
+	public Cymple(String path) {
 		super(800, 600);
+		this.data = new Data(path);
+		this.key = ChartKey.Artist;
+	}
+
+	public ChartKey getKey() {
+		return key;
+	}
+
+	public void setKey(ChartKey key) {
+		this.key = key;
 	}
 
 	public void setup() {
 		super.setup();
-		final Data data = new Data("../tmp/cymple.bin");
-		frameRate(30);
 		VBox vbox = new VBox();
 		Statusbar statusbar = new Statusbar(data);
 		HBox hbox1 = new HBox();
 		HBox hbox2 = new HBox();
 		HBox hbox3 = new HBox();
 		container.add(vbox);
-		vbox.addBottom(statusbar, 20);
-		vbox.addTop(hbox1, 200);
-		vbox.addBottom(hbox3, 200);
-		vbox.add(hbox2);
-		hbox1.addLeft(new Seeker(data), 200);
-		hbox2.addLeft(new TestWidget() {
-			public void onClick(MouseEvent e) {
-				switch(data.getChartKey().ordinal()) {
+		vbox.add(hbox1, 200);
+		vbox.add(hbox2, 180);
+		vbox.add(hbox3, 200);
+		vbox.add(statusbar, 20);
+		hbox1.add(new SeekCircle(data), 200);
+		hbox2.add(new TestWidget() {
+			public void onClick(Event e) {
+				switch(getKey().ordinal()) {
 					case 0:
-						data.setChartKey(ChartKey.Artist);
+						setKey(ChartKey.Artist);
 						break;
 					case 1:
-						data.setChartKey(ChartKey.Album);
+						setKey(ChartKey.Album);
 						break;
 					case 2:
-						data.setChartKey(ChartKey.Track);
+						setKey(ChartKey.Track);
 						break;
 					case 3:
-						data.setChartKey(ChartKey.User);
+						setKey(ChartKey.User);
 						break;
 				}
 			}
 		}, 200);
-		hbox3.addLeft(new TestWidget(), 200);
-		hbox1.addRight(new TestWidget() {
-			public User[] users = data.getUsers();
-			public Album[] albums = data.getAlbumsByArtists(data.getArtists());
-			public short user = 0;
-
-			public void draw() {
-				app.fill(0xFFFF9900);
-				app.rect(getX(), getY(), getWidth(), getHeight());
-				app.textFont(app.defaultFont());
-				app.fill(0xFF0000FF);
-				app.text(users[user].toString(), getX() + getWidth() / 2, getY() + getHeight() / 2);
-			}
-
-			public void onScrollDown(MouseEvent e) {
-				user += e.getWheelRotation();
-				user %= data.userCount();
-			}
-
-			public void onScrollUp(MouseEvent e) {
-				user -= e.getWheelRotation();
-				while (user < 0) user += data.userCount();
-				user %= data.userCount();
-			}
-
-			public void onClick(MouseEvent e) {
-				data.query(new User[] {users[user]}, albums);
-				data.update();
-			}
-		}, 200);
-		hbox2.addRight(new TestWidget(), 200);
-		hbox3.addRight(new TestWidget(), 200);
-		hbox1.add(new TestWidget());
+		hbox3.add(new TestWidget(), 200);
+		hbox1.add(new TestWidget(), 400);
 		hbox2.add(new TestWidget() {
-			public void onClick(MouseEvent e) {
-				data.update();
-			}
-
-			public void draw() {
-				super.draw();
-				ChartData cd = data.getChartData();
-				for (int i = 0; i < 12; i++) {
-					app.fill(0x80000099 + (i % 2 == 0 ? 0 : 0x333333));
-					app.rect(getX(), getY() + (18 * i), (float)(getWidth() * cd.getRelative(i)), 18);
-					app.fill(0xFF000000);
-					app.textFont(app.defaultFont());
-					app.text(cd.getName(i) + ": " + cd.getAbsolute(i), getX() + 5, getY() + 18 * i + 14);
+			public void draw(Canvas canvas) {
+				super.draw(canvas);
+				if (data.getChartData() == null) {
+					data.update();
+				}
+				else {
+					ChartData cd = data.getChartData();
+					for (int i = 0; i < 10; i++) {
+						canvas.fill(0x80000099 + (i % 2 == 0 ? 0 : 0x333333));
+						canvas.rect(0, 18 * i, (float)(getWidth() * cd.getRelative(getKey(), i)), 18);
+						canvas.fill(0xFF000000);
+						canvas.textFont(defaultFont());
+						canvas.text(cd.getName(getKey(), i) + ": " + data.getScale().number(cd.getAbsolute(getKey(), i)), 5, 18 * i + 14);
+					}
 				}
 			}
-		});
-		hbox3.add(new TestWidget());
+		}, 400);
+		hbox3.add(new TestWidget(), 400);
+		hbox1.add(new TestWidget(), 200);
+		hbox2.add(new TestWidget(), 200);
+		hbox3.add(new TestWidget(), 200);
 	}
 
 	public static void main(String args[]) {

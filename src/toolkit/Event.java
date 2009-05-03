@@ -1,16 +1,20 @@
 package cymple.toolkit;
 
-public class MouseEvent {
+public class Event {
 	private Widget widget;
 	private int x;
 	private int y;
-	private int wheelRotation;
+	private int clickX;
+	private int clickY;
+	private int scroll;
 
-	public MouseEvent(Widget widget, int x, int y, int wheelRotation) {
+	public Event(Widget widget, int x, int y, int clickX, int clickY, int scroll) {
 		this.widget = widget;
 		this.x = x;
 		this.y = y;
-		this.wheelRotation = wheelRotation;
+		this.clickX = clickX;
+		this.clickY = clickY;
+		this.scroll = scroll;
 	}
 
 	public int getX() {
@@ -95,7 +99,7 @@ public class MouseEvent {
 		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	}
 
-	public int getWheelRotation() {
-		return wheelRotation;
+	public int getScroll() {
+		return scroll;
 	}
 }

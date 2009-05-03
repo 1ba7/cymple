@@ -1,6 +1,7 @@
 package cymple.toolkit;
 
 public class Mouse {
+	private ApplicationContainer container;
 	private boolean mouseDown;
 	private boolean oldMouseDown;
 	private int clickX;
@@ -9,9 +10,10 @@ public class Mouse {
 	private int y;
 	private int oldX;
 	private int oldY;
-	private int wheelRotation;
+	private int scroll;
 
-	protected Mouse() {
+	protected Mouse(ApplicationContainer container) {
+		this.container = container;
 		this.mouseDown = false;
 		this.oldMouseDown = false;
 		this.clickX = 0;
@@ -20,10 +22,10 @@ public class Mouse {
 		this.y = 0;
 		this.oldX = 0;
 		this.oldY = 0;
-		this.wheelRotation = 0;
+		this.scroll = 0;
 	}
 
-	protected void update(boolean mouseDown, int x, int y, int wheelRotation) {
+	protected synchronized void update(boolean mouseDown, int x, int y, int scroll) {
 		if (mouseDown && !oldMouseDown) {
 			this.clickX = x;
 			this.clickY = y;
@@ -34,7 +36,40 @@ public class Mouse {
 		this.oldY = this.y;
 		this.x = x;
 		this.y = y;
-		this.wheelRotation = wheelRotation;
+		this.scroll = scroll;
+	}
+
+	private void updatePosition(java.awt.event.MouseEvent e) {
+		scroll = 0;
+		oldX = x;
+		oldY = y;
+		x = e.getX();
+		y = e.getY();
+	}
+
+	protected synchronized void mousePressed(java.awt.event.MouseEvent e) {
+		updatePosition(e);
+		mouseDown = true;
+		clickX = x;
+		clickY = y;
+		container.update();
+	}
+
+	protected synchronized void mouseReleased(java.awt.event.MouseEvent e) {
+		updatePosition(e);
+		mouseDown = false;
+		container.update();
+	}
+
+	protected synchronized void mouseMoved(java.awt.event.MouseEvent e) {
+		updatePosition(e);
+		container.update();
+	}
+
+	protected synchronized void mouseScrolled(java.awt.event.MouseWheelEvent e) {
+		updatePosition(e);
+		scroll = e.getWheelRotation();
+		container.update();
 	}
 
 	public boolean onMouseOver(Widget widget) {
@@ -61,49 +96,26 @@ public class Mouse {
 		return mouseDown && widget.contains(clickX, clickY);
 	}
 
-	public boolean onScrollUp(Widget widget) {
-		return wheelRotation < 0 && widget.contains(x, y);
+	public boolean onScroll(Widget widget) {
+		return scroll != 0 && widget.contains(x, y);
 	}
 
-	public boolean onScrollDown(Widget widget) {
-		return wheelRotation > 0 && widget.contains(x, y);
-	}
-
-	public boolean isMouseOver(Widget widget) {
+	public boolean over(Widget widget) {
 		return widget.contains(x, y);
 	}
 
-	public boolean isMouseDown(Widget widget) {
+	public boolean down(Widget widget) {
 		return widget.contains(x, y) && mouseDown;
 	}
 
-	public boolean nonClickEvents(Widget widget) {
-		return onMouseOver(widget) || onMouseOut(widget) || onMouseDown(widget)
-			|| onMouseUp(widget) || onScrollUp(widget) || onScrollDown(widget);
-	}
-
-	public boolean clickEvents(Widget widget) {
-		return onClick(widget) || onDrag(widget);
-	}
-
 	public boolean activity(Widget widget) {
-		return nonClickEvents(widget) || clickEvents(widget);
+		return onMouseOver(widget) || onMouseOut(widget) || onMouseDown(widget)
+			|| onMouseUp(widget) || onScroll(widget) || onClick(widget)
+			|| onDrag(widget);
 	}
 
-	public void sendEvents(Widget widget) {
-		if (nonClickEvents(widget)) {
-			MouseEvent e = new MouseEvent(widget, x, y, Math.abs(wheelRotation));
-			if (onMouseOver(widget)) {widget.onMouseOver(e);}
-			if (onMouseOut(widget)) {widget.onMouseOut(e);}
-			if (onMouseDown(widget)) {widget.onMouseDown(e);}
-			if (onMouseUp(widget)) {widget.onMouseUp(e);}
-			if (onScrollDown(widget)) {widget.onScrollDown(e);}
-			if (onScrollUp(widget)) {widget.onScrollUp(e);}
-		}
-		if (clickEvents(widget)) {
-			MouseEvent e = new MouseEvent(widget, clickX, clickY, Math.abs(wheelRotation));
-			if (onClick(widget)) {widget.onClick(e);}
-			if (onDrag(widget)) {widget.onDrag(e);}
-		}
+	public synchronized void sendEvents(Widget widget) {
+		Event e = new Event(widget, x, y, clickX, clickY, scroll);
+		
 	}
 }

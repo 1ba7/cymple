@@ -1,8 +1,10 @@
 package cymple.toolkit;
+import processing.core.PFont;
 import processing.core.PGraphics;
 
 public abstract class Widget {
-	private Application app;
+	protected Application app;
+	protected Mouse mouse;
 	private Container parent;
 	private int x;
 	private int y;
@@ -17,6 +19,7 @@ public abstract class Widget {
 	protected void setParent(Container parent) {
 		this.parent = parent;
 		this.app = parent.getApp();
+		this.mouse = app.getMouse();
 	}
 
 	protected void setPosition(int x, int y) {
@@ -30,7 +33,7 @@ public abstract class Widget {
 	}
 
 	public void update() {
-		app.mouse().sendEvents(this);
+		mouse.sendEvents(this);
 	}
 
 	public void draw(Canvas canvas) {}
@@ -82,12 +85,11 @@ public abstract class Widget {
 		return app.boldFont();
 	}
 
-	public void onMouseOver(MouseEvent e) {}
-	public void onMouseOut(MouseEvent e) {}
-	public void onMouseDown(MouseEvent e) {}
-	public void onMouseUp(MouseEvent e) {}
-	public void onClick(MouseEvent e) {}
-	public void onDrag(MouseEvent e) {}
-	public void onScrollUp(MouseEvent e) {}
-	public void onScrollDown(MouseEvent e) {}
+	public void onMouseOver(Event e) {}
+	public void onMouseOut(Event e) {}
+	public void onMouseDown(Event e) {}
+	public void onMouseUp(Event e) {}
+	public void onClick(Event e) {}
+	public void onDrag(Event e) {}
+	public void onScroll(Event e) {}
 }

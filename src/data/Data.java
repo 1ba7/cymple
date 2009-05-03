@@ -69,7 +69,7 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 	}
 
 	protected void resetStatus() {
-		status = "Visualising " + size() + " listens " + rangeString();
+		status = "Visualising " + scale.number(size()) + " listens " + rangeString();
 		complete = 0;
 	}
 

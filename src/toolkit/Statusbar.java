@@ -1,21 +1,21 @@
 package cymple.toolkit;
-import cymple.common.StatusSource;
+import cymple.common.Status;
 
 public class Statusbar extends Widget {
-	private StatusSource source;
+	private Status source;
 
-	public Statusbar(StatusSource source) {
+	public Statusbar(Status source) {
 		this.source = source;
 	}
 
-	public void draw() {
-		app.noStroke();
-		app.fill(0xFFEFEBE7);
-		app.rect(getX(), getY(), getWidth(), getHeight());
-		app.fill(0x400099FF);
-		app.rect(getX(), getY(), (int)(source.getComplete() * getWidth()), getHeight());
-		app.textFont(app.defaultFont());
-		app.fill(0xFF000000);
-		app.text(source.getStatus(), getX() + 15, getY() + 15);
+	public void draw(Canvas canvas) {
+		canvas.noStroke();
+		canvas.fill(0xFFEFEBE7);
+		canvas.rect(0, 0, getWidth(), getHeight());
+		canvas.fill(0x400099FF);
+		canvas.rect(0, 0, (int)(source.getComplete() * getWidth()), getHeight());
+		canvas.textFont(defaultFont());
+		canvas.fill(0xFF000000);
+		canvas.text(source.getStatus(), 15, 15);
 	}
 }

@@ -115,7 +115,7 @@ public class Scale {
 
 	public String number(long number) {
 		return (Math.log10(number) > 8 ? new DecimalFormat("0.###E0") :
-			new DecimalFormat("#,##0")).format(number);
+			new DecimalFormat("#,##0")).format(number).toLowerCase();
 	}
 
 	private SimpleDateFormat format(long start, long finish) {
