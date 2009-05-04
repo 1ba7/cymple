@@ -1,36 +1,32 @@
 package cymple.toolkit;
 
 public class VBox extends Container {
-	int usedTop;
-	int usedBottom;
+	private int internalHeight;
+	private int defaultHeight;
 
 	public VBox() {
+		this(20);
+	}
+
+	public VBox(int defaultHeight) {
 		super();
-		this.usedTop = 0;
-		this.usedBottom = 0;
+		this.internalHeight = 0;
+		this.defaultHeight = defaultHeight;
 	}
 
-	public void addTop(Widget child, int height) {
+	public void add(Widget child) {
+		this.add(child, defaultHeight);
+	}
+
+	public void add(Widget child, int widgetHeight) {
 		children.add(child);
 		child.setParent(this);
-		child.setX(getX());
-		child.setY(usedTop);
-		child.setWidth(getWidth());
-		child.setHeight(height);
-		usedTop += height;
+		child.setPosition(0, internalHeight);
+		child.setSize(getWidth(), widgetHeight);
+		internalHeight += widgetHeight;
 	}
 
-	public void addBottom(Widget child, int height) {
-		children.add(child);
-		child.setParent(this);
-		child.setX(getX());
-		child.setY(getHeight() - usedBottom - height);
-		child.setWidth(getWidth());
-		child.setHeight(height);
-		usedBottom += height;
-	}
-
-	public void add(Widget widget) {
-		this.addTop(widget, getHeight() - usedTop - usedBottom);
+	public int getInternalHeight() {
+		return internalHeight;
 	}
 }

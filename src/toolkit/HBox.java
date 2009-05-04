@@ -1,36 +1,32 @@
 package cymple.toolkit;
 
 public class HBox extends Container {
-	int usedLeft;
-	int usedRight;
+	private int internalWidth;
+	private int defaultWidth;
 
 	public HBox() {
+		this(20);
+	}
+
+	public HBox(int defaultWidth) {
 		super();
-		this.usedLeft = 0;
-		this.usedRight = 0;
+		this.internalWidth = 0;
+		this.defaultWidth = defaultWidth;
 	}
 
-	public void addLeft(Widget child, int width) {
+	public void add(Widget child) {
+		this.add(child, defaultWidth);
+	}
+
+	public void add(Widget child, int widgetWidth) {
 		children.add(child);
 		child.setParent(this);
-		child.setX(usedLeft);
-		child.setY(getY());
-		child.setWidth(width);
-		child.setHeight(getHeight());
-		usedLeft += width;
+		child.setPosition(internalWidth, 0);
+		child.setSize(widgetWidth, getHeight());
+		internalWidth += widgetWidth;
 	}
 
-	public void addRight(Widget child, int width) {
-		children.add(child);
-		child.setParent(this);
-		child.setX(getWidth() - usedRight - width);
-		child.setY(getY());
-		child.setWidth(width);
-		child.setHeight(getHeight());
-		usedRight += width;
-	}
-
-	public void add(Widget widget) {
-		this.addLeft(widget, getWidth() - usedLeft - usedRight);
+	public int getInternalWidth() {
+		return internalWidth;
 	}
 }

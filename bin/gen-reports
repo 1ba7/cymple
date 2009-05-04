@@ -1,4 +1,5 @@
 #!/bin/sh
 cd `dirname $0`
+cd ../doc/reports
 pdflatex $01.tex
 rm *.log *.out *.aux
