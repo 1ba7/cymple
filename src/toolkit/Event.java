@@ -18,27 +18,35 @@ public class Event {
 	}
 
 	public int getX() {
-		return x;
+		return x - widget.getAbsoluteX();
 	}
 
 	public int getY() {
-		return y;
+		return y - widget.getAbsoluteY();
+	}
+
+	public int getClickX() {
+		return clickX - widget.getAbsoluteX();
+	}
+
+	public int getClickY() {
+		return clickY - widget.getAbsoluteY();
 	}
 
 	public int getCenterX() {
-		return widget.getX() + widget.getWidth() / 2;
+		return widget.getWidth() / 2;
 	}
 
 	public int getCenterY() {
-		return widget.getY() + widget.getHeight() / 2;
+		return widget.getHeight() / 2;
 	}
 
 	public int getRelativeX() {
-		return x - getCenterX();
+		return getX() - getCenterX();
 	}
 
 	public int getRelativeY() {
-		return y - getCenterY();
+		return getY() - getCenterY();
 	}
 
 	public double getRelativeAngle() {
@@ -49,36 +57,28 @@ public class Event {
 		return getMagnitude(getRelativeX(), getRelativeY());
 	}
 
-	public int getCurrentX() {
-		return widget.getApp().mouseX;
+	public int getRelativeClickX() {
+		return getClickX() - getCenterX();
 	}
 
-	public int getCurrentY() {
-		return widget.getApp().mouseY;
+	public int getRelativeClickY() {
+		return getClickY() - getCenterY();
 	}
 
-	public int getCurrentRelativeX() {
-		return getCurrentX() - getCenterX();
+	public double getRelativeClickAngle() {
+		return getAngle(getRelativeClickX(), getRelativeClickY());
 	}
 
-	public int getCurrentRelativeY() {
-		return getCurrentY() - getCenterY();
-	}
-
-	public double getCurrentRelativeAngle() {
-		return getAngle(getCurrentRelativeX(), getCurrentRelativeY());
-	}
-
-	public double getCurrentRelativeMagnitude() {
-		return getMagnitude(getCurrentRelativeX(), getCurrentRelativeY());
+	public double getRelativeClickMagnitude() {
+		return getMagnitude(getRelativeClickX(), getRelativeClickY());
 	}
 
 	public int getDragX() {
-		return x - getCurrentX();
+		return getClickX() - getX();
 	}
 
 	public int getDragY() {
-		return y - getCurrentY();
+		return getClickY() - getY();
 	}
 
 	public double getDragAngle() {

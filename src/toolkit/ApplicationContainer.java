@@ -16,8 +16,23 @@ public class ApplicationContainer extends Container {
 		return 0;
 	}
 
+	public int getVisibleX() {
+		return 0;
+	}
+
+	public int getVisibleY() {
+		return 0;
+	}
+
 	public boolean visible() {
 		return true;
+	}
+
+	public void draw(Canvas canvas) {
+		canvas.noStroke();
+		canvas.fill(0xFFFFFFFF);
+		canvas.rect(0, 0, getWidth(), getHeight());
+		super.draw(canvas);
 	}
 
 	public boolean contains(int x, int y) {

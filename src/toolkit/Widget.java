@@ -5,11 +5,12 @@ import processing.core.PGraphics;
 public abstract class Widget {
 	protected Application app;
 	protected Mouse mouse;
-	private Container parent;
+	protected Container parent;
 	private int x;
 	private int y;
 	private int width;
 	private int height;
+	private int[] mask;
 
 	public Widget() {
 		this.app = null;
@@ -39,15 +40,28 @@ public abstract class Widget {
 	public void draw(Canvas canvas) {}
 
 	public boolean visible() {
-		return parent.isChildVisible(this);
+	/*	return parent.isChildVisible(this)
+			&& getAbsoluteX() + getInternalWidth() >= getVisibleX()
+			&& getAbsoluteX() + getInternalWidth() < getVisibleX() + getWidth()
+			&& getAbsoluteY() + getInternalHeight() >= getVisibleY()
+			&& getAbsoluteY() + getInternalHeight() < getVisibleY() + getHeight();*/
+		return true;
 	}
 
 	public int getAbsoluteX() {
-		return x + parent.getAbsoluteX();
+		return x + parent.getAbsoluteX() - parent.xOffset();
 	}
 
 	public int getAbsoluteY() {
-		return y + parent.getAbsoluteY();
+		return y + parent.getAbsoluteY() - parent.yOffset();
+	}
+
+	public int getVisibleX() {
+		return x + parent.getVisibleX();
+	}
+
+	public int getVisibleY() {
+		return y + parent.getVisibleY();
 	}
 
 	public int getX() {
@@ -66,11 +80,20 @@ public abstract class Widget {
 		return height;
 	}
 
+	public int getInternalWidth() {
+		return getWidth();
+	}
+
+	public int getInternalHeight() {
+		return getHeight();
+	}
+
 	public boolean contains(int x, int y) {
-		return visible() &&
-			x >= getAbsoluteX() && x < (getAbsoluteX() + width) &&
-			y >= getAbsoluteY() && y < (getAbsoluteY() + height) &&
-			parent.contains(x, y);
+		return visible()
+			&& x >= getAbsoluteX() && x < (getAbsoluteX() + getInternalWidth())
+			&& y >= getAbsoluteY() && y < (getAbsoluteY() + getInternalHeight())
+			&& x >= getVisibleX() && x < (getVisibleX() + getWidth())
+			&& y >= getVisibleY() && y < (getVisibleY() + getHeight());
 	}
 
 	public Application getApp() {
@@ -83,6 +106,19 @@ public abstract class Widget {
 
 	public PFont boldFont() {
 		return app.boldFont();
+	}
+
+	public int[] getMask(Canvas canvas) {
+		if (mask == null) {
+			mask = new int[canvas.getWidth() * canvas.getHeight()];
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					mask[canvas.getWidth() * (getVisibleY() + i) + getVisibleX()
+						 + j] = 1;
+				}
+			}
+		}
+		return mask;
 	}
 
 	public void onMouseOver(Event e) {}

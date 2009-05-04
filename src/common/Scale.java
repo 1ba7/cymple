@@ -13,7 +13,7 @@ public class Scale {
 	}
 
 	public int asInt(double position) {
-		return (int)(1023.999999 * position);
+		return (int)(1024 * position);
 	}
 
 	public long asLong(double position) {
@@ -110,7 +110,7 @@ public class Scale {
 	}
 
 	public long toLongTime(int time) {
-		return asLong(time / 1023.99999);
+		return asLong(time / 1024);
 	}
 
 	public String number(long number) {

@@ -16,8 +16,6 @@ public class SeekCircle extends Widget implements Seeker {
 
 	public void draw(Canvas canvas) {
 		canvas.noStroke();
-		canvas.fill(0xFFF99000);
-		canvas.rect(0, 0, getWidth(), getHeight());
 		canvas.fill(0xFF000066);
 		canvas.ellipseMode(canvas.CORNER);
 		canvas.ellipse(0, 0, getWidth(), getHeight());
@@ -36,7 +34,7 @@ public class SeekCircle extends Widget implements Seeker {
 	}
 
 	public void onDrag(Event e) {
-		position = e.getCurrentRelativeAngle() / (2 * Math.PI);
+		position = e.getRelativeAngle() / (2 * Math.PI);
 		position -= resolution / 2;
 		if (position < 0) {
 			position = 0;
@@ -49,7 +47,7 @@ public class SeekCircle extends Widget implements Seeker {
 	}
 
 	public void onScroll(Event e) {
-		resolution += (e.getScroll() * 2 * Math.PI / 360);
+		resolution -= (e.getScroll() * 2 * Math.PI / 360);
 		if (resolution > 1.0) resolution = 1.0;
 		if (resolution < (1.0 / 1024)) resolution = 1.0 / 1024;
 		seekable.update();

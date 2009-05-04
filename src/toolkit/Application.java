@@ -24,7 +24,7 @@ public class Application extends PApplet implements Canvas, MouseWheelListener {
 
 	public void setup() {
 		frameRate(20);
-		size(width, height);
+		size(width, height, P3D);
 	}
 
 	public void draw() {
@@ -73,6 +73,10 @@ public class Application extends PApplet implements Canvas, MouseWheelListener {
 
 	public void mouseWheelMoved(java.awt.event.MouseWheelEvent e) {
 		mouse.mouseScrolled(e);
+	}
+
+	public void unmask() {
+		mask(container.getMask(this));
 	}
 
 	public static void main(String[] args) {

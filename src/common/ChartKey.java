@@ -5,4 +5,6 @@ public enum ChartKey {
 	Artist,
 	Album,
 	Track;
+
+	public static final ChartKey standard = Artist;
 }

@@ -7,6 +7,7 @@ require 'yaml'
 FileUtils.cd(File.dirname(__FILE__))
 FileUtils.cd('../lib/')
 
+=begin
 http = begin
 	uri = URI.parse(ENV['http_proxy'])
 	Net::HTTP.Proxy(uri.host, uri.port, uri.user, uri.password)
@@ -20,6 +21,7 @@ YAML.load_file('libs.yml').each do |dep|
 	end rescue next
 	`jar -xf '#{File.split(dep).last}'`
 end unless ARGV.include?('-s')
+=end
 
 def build(dir)
 	cp = " -cp ../lib"

@@ -25,4 +25,8 @@ public class VBox extends Container {
 		child.setSize(getWidth(), widgetHeight);
 		internalHeight += widgetHeight;
 	}
+
+	public int getInternalHeight() {
+		return internalHeight;
+	}
 }

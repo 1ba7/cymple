@@ -137,7 +137,7 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			int offset = headerSize + ((userCount + artistCount + albumCount +
 				trackCount + userCount * user.id() + track.id()) << 13);
 			synchronized(file) {
-				file.seek(offset + (finish << 3));
+				file.seek(offset + (finish - 1 << 3));
 				long max = file.readLong();
 				if (start == 0) {
 					return max;

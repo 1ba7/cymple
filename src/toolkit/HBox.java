@@ -25,4 +25,8 @@ public class HBox extends Container {
 		child.setSize(widgetWidth, getHeight());
 		internalWidth += widgetWidth;
 	}
+
+	public int getInternalWidth() {
+		return internalWidth;
+	}
 }
