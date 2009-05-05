@@ -1,57 +1,79 @@
 {\rtf1\ansi\deff1\adeflang1025
-{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq0\fcharset0 Times New Roman;}{\f2\fnil\fprq0\fcharset0 Balker;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\froman\fprq0\fcharset0 Times New Roman;}{\f5\fswiss\fprq0\fcharset0 Bitstream Vera Sans;}{\f6\fmodern\fprq1\fcharset0 Courier New;}{\f7\fnil\fprq0\fcharset0 Symbol;}{\f8\froman\fprq0\fcharset0 Times{\*\falt Times New Roman};}{\f9\fnil\fprq0\fcharset128 OpenSymbol{\*\falt Arial Unicode MS};}{\f10\fswiss\fprq0\fcharset136 Wingdings;}{\f11\froman\fprq0\fcharset0 Times New Roman;}}
-{\colortbl;\red0\green0\blue0;\red216\green30\blue30;\red255\green0\blue0;\red0\green0\blue128;\red128\green128\blue128;}
-{\stylesheet{\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Normal;}
-{\s2\sb240\sa120\keepn\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af3\afs28\lang255\ltrch\dbch\af3\langfe255\hich\f3\fs28\lang0\loch\f3\fs28\lang0\sbasedon1\snext3 Heading;}
-{\s3\sa120\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0\sbasedon1\snext3 Body Text;}
-{\s4\sa120\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0\sbasedon3\snext4 List;}
-{\s5\sb120\sa120\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ai\ltrch\dbch\langfe255\hich\fs24\lang0\i\loch\fs24\lang0\i\sbasedon1\snext5 caption;}
-{\s6\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0\sbasedon1\snext6 Index;}
-{\s7\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon1\snext1 toc 1;}
-{\s8\li1440\ri0\lin1440\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon1\snext1 toc 2;}
-{\s9\li2160\ri0\lin2160\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon1\snext1 toc 3;}
-{\s10\li2880\ri0\lin2880\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon1\snext1 toc 4;}
-{\s11\cf0\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon12\snext1 Numbered Heading 1;}
-{\s12\sb240\sa120\keepn\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b\sbasedon2\snext3 heading 1;}
-{\s13\cf0\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon14\snext1 Numbered Heading 2;}
-{\s14\sb440\sa60\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs28\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs28\lang6153\b\loch\f5\fs28\lang6153\b\sbasedon1\snext1 heading 2;}
-{\s15\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Square List;}
-{\s16\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon1\snext1 Lower Roman List;}
-{\s17\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0\sbasedon1\snext17 Table Contents;}
-{\s18\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ab\ltrch\dbch\langfe255\hich\fs24\lang0\b\loch\fs24\lang0\b\sbasedon17\snext18 Table Heading;}
-{\s19\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Diamond List;}
-{\s20\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Numbered List;}
-{\s21\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Triangle List;}
-{\s22\cf0\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon23\snext1 Numbered Heading 3;}
-{\s23\sb440\sa60\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs24\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs24\lang6153\b\loch\f5\fs24\lang6153\b\sbasedon1\snext1 heading 3;}
-{\s24\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Dashed List;}
-{\s25\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon20\snext1 Upper Roman List;}
-{\s26\sb440\sa60\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs24\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs24\lang6153\b\loch\f5\fs24\lang6153\b\sbasedon1\snext1 heading 4;}
-{\s27\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Heart List;}
-{\s28\sb240\sa120\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs32\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs32\lang6153\b\loch\f5\fs32\lang6153\b\sbasedon1\snext1 Contents Header;}
-{\s29\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon20\snext1 Upper Case List;}
-{\s30\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Bullet List;}
-{\s31\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Hand List;}
-{\s32\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Tick List;}
-{\s33\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon20\snext1 Lower Case List;}
-{\s34\li1440\ri1440\lin1440\rin1440\fi0\sa120\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon1\snext1 Block Text;}
-{\s35\cf0\tx1584{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon11\snext1 Section Heading;}
-{\s36\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Implies List;}
-{\s37\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Box List;}
-{\s38\li720\ri0\lin720\rin0\fi-431\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Star List;}
-{\s39\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af6\afs24\lang255\ltrch\dbch\af6\langfe255\hich\f6\fs24\lang6153\loch\f6\fs24\lang6153\sbasedon1\snext1 Plain Text;}
-{\s40\cf0\tx1584{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon11\snext1 Chapter Heading;}
-{\*\cs42\cf0\rtlch\af7\afs24\lang255\ltrch\dbch\af7\langfe255\hich\f7\fs24\lang6153\loch\f7\fs24\lang6153 RTF_Num 2 1;}
-{\*\cs43\cf0\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon44 Endnote Text;}
-{\*\cs44\cf0\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 Normal;}
-{\*\cs45\cf0\rtlch\af1\afs20\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs20\lang6153\loch\f1\fs20\lang6153 Reference;}
-{\*\cs46\cf0\rtlch\af1\afs20\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs20\lang6153\loch\f1\fs20\lang6153 WW-Reference;}
-{\*\cs47\cf0\rtlch\afs20\lang255\ltrch\dbch\langfe255\hich\fs20\lang6153\loch\fs20\lang6153\sbasedon44 Footnote Text;}
-{\*\cs48\cf0\rtlch\af1\afs20\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs20\lang6153\loch\f1\fs20\lang6153 WW-Reference1;}
-{\*\cs49\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 Endnote Symbol;}
-{\*\cs50\cf0\rtlch\af9\afs24\lang255\ltrch\dbch\af9\langfe255\hich\f9\fs24\lang6153\loch\f9\fs24\lang6153 Bullet Symbols;}
-{\*\cs51\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 Numbering Symbols;}
-{\*\cs52\cf4\ul\ulc0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang255\loch\f1\fs24\lang255 Internet link;}
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq0\fcharset0 Times New Roman;}{\f2\fnil\fprq0\fcharset0 Balker;}{\f3\fswiss\fprq0\fcharset0 Arial;}{\f4\froman\fprq0\fcharset0 Times New Roman;}{\f5\fswiss\fprq0\fcharset0 Bitstream Vera Sans;}{\f6\fmodern\fprq1\fcharset0 Courier New;}{\f7\fnil\fprq0\fcharset0 Symbol;}{\f8\fnil\fprq0\fcharset128 OpenSymbol{\*\falt Arial Unicode MS};}{\f9\froman\fprq0\fcharset0 Times{\*\falt Times New Roman};}{\f10\froman\fprq2\fcharset128 Times New Roman;}{\f11\fnil\fprq0\fcharset0 Tahoma;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue128;\red255\green0\blue0;\red216\green30\blue30;\red128\green0\blue0;\red255\green255\blue0;\red128\green128\blue128;}
+{\stylesheet{\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\snext1 Normal;}
+{\s2\sb240\sa120\keepn\rtlch\af3\afs28\lang255\ltrch\dbch\af3\langfe255\hich\f3\fs28\lang0\loch\f3\fs28\lang0\sbasedon1\snext3 Heading;}
+{\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0\sbasedon1\snext3 Body Text;}
+{\s4\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0\sbasedon3\snext4 List;}
+{\s5\sb120\sa120\rtlch\af11\afs24\lang255\ai\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\i\loch\f1\fs24\lang6153\i\sbasedon1\snext5 caption;}
+{\s6\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0\sbasedon1\snext6 Index;}
+{\s7\sb120\sa120\rtlch\af1\afs24\lang255\ai\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\i\loch\f1\fs24\lang0\i\sbasedon1\snext7 caption;}
+{\s8\li720\ri0\lin720\rin0\fi-431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon1\snext1 toc 1;}
+{\s9\li1440\ri0\lin1440\rin0\fi-431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon1\snext1 toc 2;}
+{\s10\li2160\ri0\lin2160\rin0\fi-431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon1\snext1 toc 3;}
+{\s11\li2880\ri0\lin2880\rin0\fi-431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon1\snext1 toc 4;}
+{\s12\tx431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon13\snext1 Numbered Heading 1;}
+{\s13\sb240\sa120\keepn\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b\sbasedon2\snext3 heading 1;}
+{\s14\tx431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon15\snext1 Numbered Heading 2;}
+{\s15\sb440\sa60\rtlch\af5\afs28\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs28\lang6153\b\loch\f5\fs28\lang6153\b\sbasedon1\snext1 heading 2;}
+{\s16\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Square List;}
+{\s17\li720\ri0\lin720\rin0\fi-431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon1\snext1 Lower Roman List;}
+{\s18\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0\sbasedon1\snext18 Table Contents;}
+{\s19\qc\rtlch\af1\afs24\lang255\ab\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\b\loch\f1\fs24\lang0\b\sbasedon18\snext19 Table Heading;}
+{\s20\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Diamond List;}
+{\s21\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Numbered List;}
+{\s22\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Triangle List;}
+{\s23\tx431\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon24\snext1 Numbered Heading 3;}
+{\s24\sb440\sa60\rtlch\af5\afs24\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs24\lang6153\b\loch\f5\fs24\lang6153\b\sbasedon1\snext1 heading 3;}
+{\s25\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Dashed List;}
+{\s26\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon21\snext1 Upper Roman List;}
+{\s27\sb440\sa60\rtlch\af5\afs24\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs24\lang6153\b\loch\f5\fs24\lang6153\b\sbasedon1\snext1 heading 4;}
+{\s28\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Heart List;}
+{\s29\sb240\sa120\qc\rtlch\af5\afs32\lang255\ab\ltrch\dbch\af5\langfe255\hich\f5\fs32\lang6153\b\loch\f5\fs32\lang6153\b\sbasedon1\snext1 Contents Header;}
+{\s30\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon21\snext1 Upper Case List;}
+{\s31\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Bullet List;}
+{\s32\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Hand List;}
+{\s33\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Tick List;}
+{\s34\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon21\snext1 Lower Case List;}
+{\s35\li1440\ri1440\lin1440\rin1440\fi0\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon1\snext1 Block Text;}
+{\s36\tx1584\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon12\snext1 Section Heading;}
+{\s37\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Implies List;}
+{\s38\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Box List;}
+{\s39\li720\ri0\lin720\rin0\fi-431\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\snext1 Star List;}
+{\s40\rtlch\af6\afs24\lang255\ltrch\dbch\af6\langfe255\hich\f6\fs24\lang6153\loch\f6\fs24\lang6153\sbasedon1\snext1 Plain Text;}
+{\s41\tx1584\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153\sbasedon12\snext1 Chapter Heading;}
+{\*\cs43\rtlch\af7\afs24\lang255\ltrch\dbch\af7\langfe255\hich\f7\fs24\lang6153\loch\f7\fs24\lang6153 RTF_Num 2 1;}
+{\*\cs44\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 2;}
+{\*\cs45\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 3;}
+{\*\cs46\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 4;}
+{\*\cs47\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 5;}
+{\*\cs48\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 6;}
+{\*\cs49\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 7;}
+{\*\cs50\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 8;}
+{\*\cs51\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 9;}
+{\*\cs52\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 RTF_Num 2 10;}
+{\*\cs53\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 1;}
+{\*\cs54\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 2;}
+{\*\cs55\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 3;}
+{\*\cs56\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 4;}
+{\*\cs57\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 5;}
+{\*\cs58\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 6;}
+{\*\cs59\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 7;}
+{\*\cs60\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 8;}
+{\*\cs61\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 9;}
+{\*\cs62\cf0\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 RTF_Num 3 10;}
+{\*\cs63\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153\sbasedon64 Endnote Text;}
+{\*\cs64\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 Normal;}
+{\*\cs65\rtlch\afs20\lang255\ltrch\dbch\langfe255\hich\fs20\lang6153\loch\fs20\lang6153 Reference;}
+{\*\cs66\rtlch\afs20\lang255\ltrch\dbch\langfe255\hich\fs20\lang6153\loch\fs20\lang6153 WW-Reference;}
+{\*\cs67\rtlch\af1\afs20\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs20\lang6153\loch\f1\fs20\lang6153\sbasedon64 Footnote Text;}
+{\*\cs68\rtlch\afs20\lang255\ltrch\dbch\langfe255\hich\fs20\lang6153\loch\fs20\lang6153 WW-Reference1;}
+{\*\cs69\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 Endnote Symbol;}
+{\*\cs70\rtlch\af8\afs24\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs24\lang6153\loch\f8\fs24\lang6153 Bullet Symbols;}
+{\*\cs71\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 Numbering Symbols;}
+{\*\cs72\cf2\ul\ulc0\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang255\loch\fs24\lang255 Internet link;}
+{\*\cs73\cf0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 Endnote Symbol;}
+{\*\cs74\cf2\ul\ulc0\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang255\loch\f1\fs24\lang255 Internet link;}
 }{\*\listtable{\list\listtemplateid1
 {\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'00.;}{\levelnumbers\'01;}\fi-360\li360}
 {\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'01.;}{\levelnumbers\'01;}\fi-360\li720}
@@ -64,16 +86,16 @@
 {\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'08.;}{\levelnumbers\'01;}\fi-360\li3240}
 {\*\soutlvl{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'09.;}{\levelnumbers\'01;}\fi-360\li3600}}\listid1}
 {\list\listtemplateid2
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li360}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9702 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li720}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9642 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li1080}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li1440}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9702 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li1800}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9642 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li2160}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li2520}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9702 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li2880}
-{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9642 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li3240}
-{\*\soutlvl{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f9\f9\f9\f9\fi-360\li3600}}\listid2}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li360}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9702 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li720}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9642 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li1080}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li1440}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9702 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li1800}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9642 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li2160}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li2520}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9702 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li2880}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u9642 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li3240}
+{\*\soutlvl{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\u8226 ?;}{\levelnumbers;}\f8\f8\f8\f8\fi-360\li3600}}{\listname RTF_Num 3;}\listid2}
 }{\listoverridetable{\listoverride\listid1\listoverridecount0\ls0}{\listoverride\listid2\listoverridecount0\ls1}}
 
 {\info{\creatim\yr0\mo0\dy0\hr0\min0}{\revtim\yr0\mo0\dy0\hr0\min0}{\printim\yr0\mo0\dy0\hr0\min0}{\comment StarWriter}{\vern3000}}\deftab720
@@ -81,62 +103,92 @@
 {\pgdsc0\pgdscuse195\pgwsxn11905\pghsxn16837\marglsxn1133\margrsxn1133\margtsxn1133\margbsxn1133\pgdscnxt0 Standard;}
 {\pgdsc1\pgdscuse195\pgwsxn11905\pghsxn16837\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\pgdscnxt1 Endnote;}}
 {\*\pgdscno0}\paperh16837\paperw11905\margl1133\margr1133\margt1133\margb1133\sectd\sbknone\pgwsxn11905\pghsxn16837\marglsxn1133\margrsxn1133\margtsxn1133\margbsxn1133\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnar
-\pard\plain \ltrpar\s12\cf0\qc\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\li431\ri0\lin431\rin0\fi-431\sb240\sa120\keepn\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b 
-\par \pard\plain \ltrpar\s12\cf0\qc\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\li431\ri0\lin431\rin0\fi-431\sb240\sa120\keepn\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b 
-\par \pard\plain \ltrpar\s3\cf0\qc\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\li431\ri0\lin431\rin0\fi-431\sa120\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b 
-\par \pard\plain \ltrpar\s12\cf0\ul\ulc0\qc\tx431{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\li431\ri0\lin431\rin0\fi-431\sb240\sa120\keepn\rtlch\af1\afs40\lang255\ab\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\b\loch\f1\fs40\lang0\b {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b 1BA7 Group Project }
-\par \pard\plain \ltrpar\s3\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs40\lang255\ltrch\dbch\langfe255\hich\fs40\lang0\loch\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 TEAM B}
-\par \pard\plain \ltrpar\s3\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs40\lang255\ltrch\dbch\langfe255\hich\fs40\lang0\loch\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Stephan Downes}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Cristover Lopes}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Shane O'Brien}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Padriag Redmond}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Stuart Rigby-Jones}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Daniel Walsh}
-\par \pard\plain \ltrpar\s3\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \page\pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0\qc{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0\ul\ulc0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs40\lang255\ltrch\dbch\langfe255\hich\fs40\lang0\loch\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Project Outline}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\dbch\hich\fs32\loch\fs32 For this project, we designed and created an application to visualise a set of users' music history. Our application, titled }}{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\dbch\hich\fs32\i\loch\fs32\i \'93Cymple: Your Musical Past Lovingly Envisioned.\'94, }{\rtlch\ltrch\dbch\hich\fs32\loch\fs32 does just that. }}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0\rtlch\ltrch\dbch\hich\fs32\loch\fs32 As part of the project the application is required display subsets of the data which are broken down into user-selectable queries. It had to be able to implement at least the following four queries:}
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang6153\loch\fs32\lang6153
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\fs32\fs32\fs32 1.\tab}\ilvl0 \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls0\li360\ri0\lin360\rin0\fi-360\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang6153\loch\fs32\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\cf1\rtlch\ltrch\dbch\hich\f11\loch\f11 Tracks which have been played within a certain date and time range. }
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\fs32\fs32\fs32 2.\tab}\ilvl0 \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\cf1\rtlch\ltrch\dbch\hich\f11\loch\f11 The tracks played by a particular user }
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\fs32\fs32\fs32 3.\tab}\ilvl0 \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\cf1\rtlch\ltrch\dbch\hich\f11\loch\f11 The most popular tracks over a particular date range. }
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\fs32\fs32\fs32 4.\tab}\ilvl0 \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\cf1\rtlch\ltrch\dbch\hich\f11\loch\f11 The popularity of a track over a particular date range. }
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang6153\loch\fs32\lang6153
-\par \pard\plain \ltrpar\s1\cf3{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang6153\loch\fs32\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\rtlch\ltrch\dbch\hich\f11\lang0\loch\f11\lang0 ***}
-\par \pard\plain \ltrpar\s3\cf3{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang0\loch\fs32\lang0
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0 
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0
-\par \page\pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0\ltrch\hich\fs40\loch\fs40\ltrch\dbch\ul\ulc0\rtlch Architecture Overview}
-\par \pard\plain \ltrpar\s3\cf0\ul\ulc0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs40\lang255\ltrch\dbch\langfe255\hich\fs40\lang0\loch\fs40\lang0 
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang0\loch\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 We decided to break the application into three sections:}
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\sa120\lang0\f9\f9\f9 \'95\tab}\ilvl0 \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls1\li360\ri0\lin360\rin0\fi-360\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0\rtlch\ltrch\dbch\hich\fs32\lang0\loch\fs32\lang0 G.U.I. ("front end") }
-\par \pard\plain {\listtext\pard\plain \li720\ri0\lin720\rin0\fi-360\sa120\lang0\f9\f9\f9 \u9702\'3f\tab}\ilvl1 \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls1\li720\ri0\lin720\rin0\fi-360\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\dbch\hich\fs32\lang0\loch\fs32\lang0 Essentially, this is the layer which the user }}{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\dbch\hich\fs32\loch\fs32 would interact with.  It uses both the data layer and the toolkit to implement an application which visualises the data from the .csv file.}}
-\par \pard\plain \ltrpar\s3\cf0\tx1170\tx1440{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang6153\loch\fs32\lang6153 
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\sa120\lang0\f9\f9\f9 \'95\tab}\ilvl0 \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls1\li360\ri0\lin360\rin0\fi-360\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0\rtlch\ltrch\dbch\hich\fs32\lang0\loch\fs32\lang0 Data Layer ("back end") }
-\par \pard\plain {\listtext\pard\plain \li720\ri0\lin720\rin0\fi-360\sa120\lang0\f9\f9\f9 \u9702\'3f\tab}\ilvl1 \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls1\li720\ri0\lin720\rin0\fi-360\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\dbch\hich\fs32\lang0\loch\fs32\lang0 This primarily consisted of an API which is used by the application to gather and }}{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\cf2\rtlch\ltrch\dbch\hich\f2\fs32\lang0\loch\f2\fs32\lang0 **adjective which describes waht the API does}{\cf2\rtlch\ltrch\dbch\hich\f2\fs32\loch\f2\fs32 **. }}
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0
-\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\sa120\lang0\f9\f9\f9 \'95\tab}\ilvl0 \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls1\li360\ri0\lin360\rin0\fi-360\sa120\ql\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang0\loch\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0\rtlch\ltrch\dbch\hich\fs32\lang0\loch\fs32\lang0 The Toolkit}
-\par \pard\plain {\listtext\pard\plain \li720\ri0\lin720\rin0\fi-360\sa120\fs32\lang0\fs32\fs32\f9\f9\f9 \u9702\'3f\tab}\ilvl1 \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ls1\li720\ri0\lin720\rin0\fi-360\sa120\ql\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang0\loch\fs32\lang0{\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 This provids a set of "High-Level" widgets which are used in the application. }
-\par \pard\plain \ltrpar\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sa120\ql\rtlch\af8\afs1\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs1\lang0\loch\f8\fs1\lang0 
-\par \pard\plain \ltrpar\s1\cf0\ul\ulc0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ql\rtlch\afs40\lang255\ltrch\dbch\langfe255\hich\fs40\lang6153\loch\fs40\lang6153 
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0 The Work Plan}
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ql\rtlch\afs32\lang255\ltrch\dbch\langfe255\hich\fs32\lang6153\loch\fs32\lang6153 
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 The first thing we did was set up a repository on {\field{\*\fldinst HYPERLINK "http://github.com/" }{\fldrslt \*\cs52\cf4\ul\ulc0\rtlch\ltrch\dbch\hich\f1\fs24\lang255\loch\f1\fs24\lang255 GitHub}} for the project.}
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 This was swiftly followed by a group tutorial on using Git, our version control system, that was given by Shane O'Brien. We installed the necessary software to have our version control system up and running as well as setting up GitHub Accounts. }
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 \tab Our primary methods of communication was through regular meetings which were held twice weekly in the Hamilton Library study room and through the use of group emails via TCD Myzone. We also decided to exchange phone numbers so that we could organise addit
+\pard\plain \ltrpar\s13\qc\tx431\li431\ri0\lin431\rin0\fi-431\sb240\sa120\keepn\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b 
+\par \pard\plain \ltrpar\s13\qc\tx431\li431\ri0\lin431\rin0\fi-431\sb240\sa120\keepn\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b 
+\par \pard\plain \ltrpar\s3\qc\tx431\li431\ri0\lin431\rin0\fi-431\sa120\rtlch\af3\afs32\lang255\ab\ltrch\dbch\af3\langfe255\hich\f3\fs32\lang0\b\loch\f3\fs32\lang0\b 
+\par \pard\plain \ltrpar\s13\ul\ulc0\qc\tx431\li431\ri0\lin431\rin0\fi-431\sb240\sa120\keepn\rtlch\af1\afs40\lang255\ab\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\b\loch\f1\fs40\lang0\b {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b 1BA7 Group Project }
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\loch\f1\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 TEAM B}
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\loch\f1\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Stephan Downes}
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\loch\f1\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Cristover Lopes}
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Shane O'Brien}
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Padriag Redmond}
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Stuart Rigby-Jones}
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Daniel Walsh}
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \page\pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\qc\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\ul\ulc0\sa120\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\loch\f1\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Project Outline}
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\hich\fs32\loch\fs32 For this project, we designed and created an application to visualise a set of users' music history. Our application, titled }}{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\hich\fs32\i\loch\fs32\i \'93Cymple: Your Musical Past Lovingly Envisioned.\'94, }{\rtlch\ltrch\hich\fs32\loch\fs32 does just that. }}
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 As part of the project the application is required display subsets of the data which are broken down into user-selectable queries. It had to be able to implement at least the following four queries:}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\cf1\fs32\fs32 1.\tab}\ilvl0 \ltrpar\s1\cf1\ls0\li360\ri0\lin360\rin0\fi-360\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 Tracks which have been played within a certain date and time range. }
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\cf1\fs32 2.\tab}\ilvl0 \ltrpar\s1\cf1\ls0\li360\ri0\lin360\rin0\fi-360\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 The tracks played by a particular user }
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\cf1\fs32 3.\tab}\ilvl0 \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 The most popular tracks over a particular date range. }
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\cf1\fs32 4.\tab}\ilvl0 \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 The popularity of a track over a particular date range. }
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 
+\par \pard\plain \ltrpar\s1\cf3\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 ***}
+\par \pard\plain \ltrpar\s3\cf3\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain \ltrpar\s3\sa120\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \page\pard\plain \ltrpar\s3\ul\ulc0\sa120\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\loch\f1\fs40\lang0 {\rtlch \ltrch\loch\f1\fs40\lang0\i0\b0 Architecture Overview}
+\par \pard\plain \ltrpar\s3\ul\ulc0\sa120\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang0\loch\f1\fs40\lang0 
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 We decided to break the application into three sections:}
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\sa120\fs32\lang0\fs32\f8\f8\f8 \'95\tab}\ilvl0 \ltrpar\s3\ls1\li360\ri0\lin360\rin0\fi-360\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 G.U.I. ("front end") }
+\par \pard\plain {\listtext\pard\plain \li720\ri0\lin720\rin0\fi-360\sa120\lang0\f8\f8\f8 \u9702\'3f\tab}\ilvl1 \ltrpar\s3\ls1\li720\ri0\lin720\rin0\fi-360\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0\rtlch\ltrch\hich\fs32\loch\fs32 Essentially, this is the layer which the user would interact with.  It uses both the data layer and the toolkit to implement an application which visualises the data from the .csv file.}
+\par \pard\plain \ltrpar\s3\tx1170\tx1440\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\sa120\fs32\lang0\fs32\f8\f8\f8 \'95\tab}\ilvl0 \ltrpar\s3\ls1\li360\ri0\lin360\rin0\fi-360\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 Data Layer ("back end") }
+\par \pard\plain {\listtext\pard\plain \li720\ri0\lin720\rin0\fi-360\sa120\lang0\f8\f8\f8 \u9702\'3f\tab}\ilvl1 \ltrpar\s3\ls1\li720\ri0\lin720\rin0\fi-360\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\rtlch\ltrch\hich\fs32\loch\fs32 This primarily consisted of an API which is used by the application to gather and }}{\rtlch \ltrch\loch\f1\fs24\lang0\i0\b0{\cf4\rtlch\ltrch\hich\f2\fs32\loch\f2\fs32 **adjective which describes waht the API does**. }}
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang0\loch\f1\fs24\lang0 
+\par \pard\plain {\listtext\pard\plain \li360\ri0\lin360\rin0\fi-360\sa120\fs32\lang0\fs32\f8\f8\f8 \'95\tab}\ilvl0 \ltrpar\s3\ls1\li360\ri0\lin360\rin0\fi-360\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 The Toolkit}
+\par \pard\plain {\listtext\pard\plain \li720\ri0\lin720\rin0\fi-360\sa120\fs32\lang0\fs32\f8\f8\f8 \u9702\'3f\tab}\ilvl1 \ltrpar\s3\ls1\li720\ri0\lin720\rin0\fi-360\sa120\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang0\loch\f1\fs32\lang0 {\rtlch \ltrch\loch\f1\fs32\lang0\i0\b0 This provids a set of "High-Level" widgets which are used in the application. }
+\par \pard\plain \ltrpar\s3\sa120\ql\rtlch\af9\afs1\lang255\ltrch\dbch\af9\langfe255\hich\f9\fs1\lang0\loch\f9\fs1\lang0 
+\par \pard\plain \ltrpar\s1\ul\ulc0\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153 
+\par \pard\plain \ltrpar\s1\cf3\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153 {\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0 ** more bullet points?}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \page\pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\ul\ulc0\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153 {\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0 The Work Plan}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153{\rtlch \ltrch\loch\f1\fs24\lang6153\i0\b0{\ltrch\hich\fs32\loch\fs32 The first thing we did was set up a repository on }}{\rtlch \ltrch\loch\f1\fs24\lang6153\i0\b0{\field{\*\fldinst HYPERLINK "http://github.com/" }{\fldrslt \*\cs74\cf2\ul\ulc0\rtlch\ltrch\dbch\hich\f1\fs24\lang255\loch\f1\fs24\lang255{\cf2\ul\ulc0\ltrch\hich\lang255\loch\lang255 GitHub}}}{\ltrch\hich\fs32\loch\fs32  for the project.}}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 This was swiftly followed by a group tutorial on using Git, our version control system, that was given by Shane O'Brien. We installed the necessary software to have our version control system up and running as well as setting up GitHub Accounts. }
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 \tab Our primary methods of communication was through regular meetings which were held twice weekly in the Hamilton Library study room and through the use of group emails via TCD Myzone. We also decided to exchange phone numbers so that we could organise addit
 ional meetings \'93on the fly\'94 and so we could to keep-up-to date with each other when the use email was unavailable.{\cf3  **(is unavailable a good word?)}}
-\par \pard\plain \ltrpar\s1\cf0\ul\ulc0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ql\rtlch\afs40\lang255\ltrch\dbch\langfe255\hich\fs40\lang6153\loch\fs40\lang6153 
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\afs24\lang255\ltrch\dbch\langfe255\hich\fs24\lang6153\loch\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0 Initial Design}
-\par \pard\plain \ltrpar\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\ql\rtlch\af8\afs1\lang255\ltrch\dbch\af8\langfe255\hich\f8\fs1\lang6153\loch\f8\fs1\lang6153 
+\par \pard\plain \ltrpar\s1\ul\ulc0\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153 
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153 {\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0 \tab {\rtlch\ltrch\dbch\hich\fs32\loch\fs32 We decided that it would be better if we started off working on an area of our preference, i.e. Front or back-end. Stiabh was chosen as project manager for is excellent coffee making 5k177z and biscuit managment experience.}{\cf3\rtlch\ltrch\dbch\hich\fs12\loch\fs12  (alternatively, insert BS of yo
+ur choice). }}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\ul\ulc0\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153 {\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0 Initial Design}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153 
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 We started off the design process by drawing some ideas as  sketches. From this we were able to draw a mock up of what we aimed to have the program looking like by making some refinements here and there. }
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 \tab We opted to visualise the data as charts and graphs:}
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 Charts for when the user wants to display \'93most popular\'94 songs, sorted by number of listens. }
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 A trend graph is used to display the number of listens over time.}
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153 {\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0 \tab The user defines their queries by means of select tabs:}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153{\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0{\rtlch\ltrch\dbch\hich\fs32\loch\fs32 Users, Artists andAlbums. }}{\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0{\cf3\rtlch\ltrch\dbch\hich\fs20\loch\fs20 (is there one for tracks?) }}
+\par \pard\plain \ltrpar\s1\ql\rtlch\af1\afs32\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs32\lang6153\loch\f1\fs32\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\cf1 What these tabs do is define which parts of the data set are needed, which is then updated and redrawn}
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153{\rtlch \ltrch\loch\f1\fs32\lang6153\i0\b0\cf1 .}
+\par \pard\plain \ltrpar\s1\cf3\ql\rtlch\af1\afs28\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs28\lang6153\loch\f1\fs28\lang6153 {\rtlch \ltrch\loch\f1\fs28\lang6153\i0\b0 ** mention the THE CYMPLE SEEKER{\ltrch\hich\f10\loch\f10 \u8482\'3f}}
+\par \pard\plain \ltrpar\s1\cf1\ul\ulc0\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153{\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0\ltrch\hich\f10\loch\f10 Data Layer}
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153{\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0\ltrch\hich\f10\loch\f10 LaTex for the win!!!}
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153
+\par \pard\plain \ltrpar\s1\rtlch\af1\afs24\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs24\lang6153\loch\f1\fs24\lang6153{\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0\ltrch\hich\f10\loch\f10 Rest of Report}
+\par \pard\plain \ltrpar\s1\cf1\ql\rtlch\af1\afs40\lang255\ltrch\dbch\af1\langfe255\hich\f1\fs40\lang6153\loch\f1\fs40\lang6153{\rtlch \ltrch\loch\f1\fs40\lang6153\i0\b0\ltrch\hich\f10\loch\f10 To be continued....}
+\par \pard\plain \ltrpar\s1\cf1\ul\ulc0\chcbpat6\ql\rtlch\af9\afs1\lang255\ltrch\dbch\af9\langfe255\hich\f9\fs1\lang6153\loch\f9\fs1\lang6153 {\rtlch \ltrch\loch  }{\rtlch \ltrch\loch\f9\fs1\lang6153\i0\b0 onD}
 \par }
