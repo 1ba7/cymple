@@ -9,3 +9,4 @@ gen-data-fast
 lib/*
 !lib/libs.yml
 *.bin
+*~

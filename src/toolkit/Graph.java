@@ -7,6 +7,7 @@ public class Graph extends Widget {
 	private GraphData graphData;
 
 	public Graph(Graphable graphable) {
+		super();
 		this.graphable = graphable;
 	}
 
