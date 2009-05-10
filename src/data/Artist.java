@@ -31,4 +31,8 @@ public class Artist implements SelectItemData {
 	public String toString() {
 		return name;
 	}
+
+	public int compareTo(SelectItemData other) {
+		return id == other.id() ? 0 : (id > other.id() ? 1 : -1);
+	}
 }

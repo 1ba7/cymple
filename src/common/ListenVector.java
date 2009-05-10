@@ -16,6 +16,10 @@ public class ListenVector {
 		}
 	}
 
+	public ListenVector() {
+		listens = new long[1024];
+	}
+
 	public ListenVector(long[] listens) {
 		this.listens = listens;
 	}

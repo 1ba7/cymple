@@ -1,0 +1,8 @@
+#!/bin/sh
+cd `basename $0`
+cat tex/abstract.tex tex/body.tex | detex | wc -w > .wc
+pdflatex paper.tex
+bibtex paper
+pdflatex paper.tex
+pdflatex paper.tex
+rm paper.aux paper.log paper.out paper.toc .wc *~ tex/*~ paper.bbl paper.blg

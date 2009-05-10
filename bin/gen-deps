@@ -34,7 +34,7 @@ end
 
 FileUtils.cd('..')
 build('common')
-build('data')
+#build('data')
 #`javac -cp lib src/Generate*.java -d tmp/`
 build('toolkit')
-`javac -cp lib src/Cymple.java -d lib/`
+#`javac -cp lib src/Cymple.java -d lib/`

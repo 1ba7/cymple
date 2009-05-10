@@ -35,6 +35,10 @@ public class Album implements SelectItemData {
 	}
 
 	public String toString() {
-		return getArtist().getName() + " — " + title;
+		return getArtist().getName() + "," + title;
+	}
+
+	public int compareTo(SelectItemData other) {
+		return id == other.id() ? 0 : (id > other.id() ? 1 : -1);
 	}
 }

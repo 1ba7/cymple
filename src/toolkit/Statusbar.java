@@ -10,12 +10,16 @@ public class Statusbar extends Widget {
 
 	public void draw(Canvas canvas) {
 		canvas.noStroke();
-		canvas.fill(0xFFEFEBE7);
+		canvas.fill(0xFFcfcfcf);
 		canvas.rect(0, 0, getWidth(), getHeight());
-		canvas.fill(0x400099FF);
+		canvas.fill(0xFF84fa1e);
 		canvas.rect(0, 0, (int)(source.getComplete() * getWidth()), getHeight());
 		canvas.textFont(defaultFont());
 		canvas.fill(0xFF000000);
-		canvas.text(source.getStatus(), 15, 15);
+		canvas.text(source.getStatus(), 15, 16);
+		canvas.stroke(0xFF000000);
+		canvas.strokeWeight(1);
+		canvas.line(0, 0, getWidth(), 0);
+		canvas.noStroke();
 	}
 }

@@ -15,7 +15,8 @@ public class VScrollableContainer extends Container {
 	}
 
 	public void onScroll(Event e) {
-		setPosition(position + e.getScroll() / 50.0);
+		setPosition((yOffset() + e.getScroll() * 15.0) /
+			(child.getInternalHeight() * (1 - getResolution())));
 	}
 
 	public void draw(Canvas canvas) {

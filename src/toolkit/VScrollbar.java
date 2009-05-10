@@ -27,10 +27,12 @@ public class VScrollbar extends Widget {
 		}
 		height = (int)((container.getResolution() < 0) ? getHeight() :
 			getHeight() * container.getResolution());
-		canvas.noStroke();
 		canvas.fill(0xff000000);
 		canvas.rect(0, 0, getWidth(), getHeight());
-		canvas.fill(0x40ffffff);
+		canvas.stroke(0xffffff);
+		canvas.strokeWeight(1);
+		canvas.fill(0xff84fa1e);
 		canvas.rect(0, y, getWidth(), height);
+		canvas.noStroke();
 	}
 }

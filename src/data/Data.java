@@ -14,8 +14,12 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 	private int update;
 	private String status;
 	volatile private double complete;
-	private Set<User> selectedUsers;
-	private Set<Track> selectedTracks;
+	private HashSet<User> selectedUsers;
+	private HashSet<Track> selectedTracks;
+	private HashSet<User> addedUsers;
+	private HashSet<User> removedUsers;
+	private HashSet<Track> addedTracks;
+	private HashSet<Track> removedTracks;
 
 	public Data(String filename) {
 		super(filename);
@@ -29,6 +33,10 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			selectedTracks.add(track);
 		}
 		(new Thread(this)).start();
+		addedUsers = new HashSet<User>();
+		removedUsers = new HashSet<User>();
+		addedTracks = new HashSet<Track>();
+		removedTracks = new HashSet<Track>();
 	}
 
 	public void connect(Seeker seeker) {
@@ -80,6 +88,7 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 			}
 			catch (InterruptedException e) {}
 			while (update > 0) {
+				updateTotals();
 				updateGraph();
 				updateChart();
 				update -= 1;
@@ -87,16 +96,68 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 		}
 	}
 
+	private void updateTotals() {
+		status = "Updating totals...";
+		complete = 0;
+		HashSet<User> addedUsers;
+		HashSet<User> removedUsers;
+		HashSet<Track> addedTracks;
+		HashSet<Track> removedTracks;
+		synchronized(total) {
+			addedUsers = (HashSet<User>)this.addedUsers.clone();
+			removedUsers = (HashSet<User>)this.removedUsers.clone();
+			addedTracks = (HashSet<Track>)this.addedTracks.clone();
+			removedTracks = (HashSet<Track>)this.removedTracks.clone();
+			this.addedUsers.clear();
+			this.removedUsers.clear();
+			this.addedTracks.clear();
+			this.removedTracks.clear();
+			double offset = 1.0 / (addedUsers.size() * addedTracks.size() + 
+				removedUsers.size() * removedTracks.size());
+			for (User user: addedUsers) {
+				for (Track track: selectedTracks) {
+					total.add(readListenVector(user, track));
+					complete += offset;
+				}
+			}
+			for (User user: removedUsers) {
+				for (Track track: selectedTracks) {
+					total.subtract(readListenVector(user, track));
+					complete += offset;
+				}
+			}
+			for (User user: selectedUsers) {
+				for (Track track: addedTracks) {
+					total.add(readListenVector(user, track));
+					complete += offset;
+				}
+			}
+			for (User user: selectedUsers) {
+				for (Track track: removedTracks) {
+					total.subtract(readListenVector(user, track));
+					complete += offset;
+				}
+			}
+		}
+		resetStatus();
+	}
+
 	private void updateGraph() {
 		status = "Updating graph...";
 		complete = 0.5;
-		graphData = new GraphData(total, seeker.getResolution());
+		graphData = new GraphData(total, seeker);
 		resetStatus();
 	}
 
 	private void updateChart() {
 		int start = scale.startInt(seeker.getPosition(), seeker.getResolution());
 		int finish = scale.finishInt(seeker.getPosition(), seeker.getResolution());
+		HashSet<User> selectedUsers;
+		HashSet<Track> selectedTracks;
+		synchronized(total) {
+			selectedUsers = (HashSet<User>)this.selectedUsers.clone();
+			selectedTracks = (HashSet<Track>)this.selectedTracks.clone();
+		}
 		Map<String, Long> users, artists, albums, tracks;
 
 		Map<ChartKey, Map<String, Long>> map;
@@ -134,8 +195,8 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 
 	private long getListens(User user, Track track, int start, int finish) {
 		try {
-			int offset = headerSize + ((userCount + artistCount + albumCount +
-				trackCount + userCount * user.id() + track.id()) << 13);
+			int offset = headerSize + ((1 + userCount + artistCount + albumCount
+				+ trackCount + trackCount * user.id() + track.id()) << 13);
 			synchronized(file) {
 				file.seek(offset + (finish - 1 << 3));
 				long max = file.readLong();
@@ -155,65 +216,61 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 
 	public void add(User user) {
 		synchronized(total) {
-			total.add(readListenVector(user));
-			selectedUsers.add(user);
+			if (!selectedUsers.contains(user)) {
+				selectedUsers.add(user);
+				addedUsers.add(user);
+			}
 		}
 	}
 
 	public void add(Artist artist) {
-		synchronized(total) {
-			total.add(readListenVector(artist));
-			for (Track track: getTracksFromAlbums(artist.getAlbums())) {
-				selectedTracks.add(track);
-			}
+		for (Album album: artist.getAlbums()) {
+			add(album);
 		}
 	}
 
 	public void add(Album album) {
-		synchronized(total) {
-			total.add(readListenVector(album));
-			for (Track track: album.getTracks()) {
-				selectedTracks.add(track);
-			}
+		for (Track track: album.getTracks()) {
+			add(track);
 		}
 	}
 
 	public void add(Track track) {
 		synchronized(total) {
-			total.add(readListenVector(track));
-			selectedTracks.add(track);
+			if (!selectedTracks.contains(track)) {
+				selectedTracks.add(track);
+				addedTracks.add(track);
+			}
 		}
 	}
 
 	public void remove(User user) {
 		synchronized(total) {
-			total.subtract(readListenVector(user));
-			selectedUsers.remove(user);
+			if (selectedUsers.contains(user)) {
+				selectedUsers.remove(user);
+				removedUsers.add(user);
+			}
 		}
 	}
 
 	public void remove(Artist artist) {
-		synchronized(total) {
-			total.subtract(readListenVector(artist));
-			for (Track track: getTracksFromAlbums(artist.getAlbums())) {
-				selectedTracks.remove(track);
-			}
+		for (Album album: artist.getAlbums()) {
+			remove(album);
 		}
 	}
 
 	public void remove(Album album) {
-		synchronized(total) {
-			total.subtract(readListenVector(album));
-			for (Track track: album.getTracks()) {
-				selectedTracks.remove(track);
-			}
+		for (Track track: album.getTracks()) {
+			remove(track);
 		}
 	}
 
 	public void remove(Track track) {
 		synchronized(total) {
-			total.subtract(readListenVector(track));
-			selectedTracks.remove(track);
+			if (selectedTracks.contains(track)) {
+				selectedTracks.remove(track);
+				removedTracks.add(track);
+			}
 		}
 	}
 
@@ -222,21 +279,26 @@ public class Data extends Header implements Graphable, Chartable, Status, Runnab
 	}
 
 	protected ListenVector readListenVector(User user) {
-		return readListenVector(headerSize + (user.id() << 13));
+		return readListenVector(headerSize + (1 + user.id() << 13));
 	}
 
 	protected ListenVector readListenVector(Artist artist) {
-		return readListenVector(headerSize + ((userCount + artist.id()) << 13));
+		return readListenVector(headerSize + ((1 + userCount + artist.id()) << 13));
 	}
 
 	protected ListenVector readListenVector(Album album) {
-		return readListenVector(headerSize + ((userCount + artistCount +
+		return readListenVector(headerSize + ((1 + userCount + artistCount +
 			album.id()) << 13));
 	}
 
 	protected ListenVector readListenVector(Track track) {
-		return readListenVector(headerSize + ((userCount + artistCount +
+		return readListenVector(headerSize + ((1 + userCount + artistCount +
 			albumCount + track.id()) << 13));
+	}
+
+	protected ListenVector readListenVector(User user, Track track) {
+		return readListenVector(headerSize + ((1 + userCount + artistCount +
+			albumCount + trackCount + user.id() * trackCount + track.id()) << 13));
 	}
 
 	private ListenVector readListenVector(int offset) {

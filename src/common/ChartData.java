@@ -77,6 +77,7 @@ public class ChartData {
 	// The reasoning for this is that I can sort two arrays at once
 	// i.e., absolutes and names (which is sorted based on absolutes)
 	private void sort(long absolutes[], String names[], int offset, int length) {
+		if (absolutes.length == 0) return;
 		int m = offset + (length >> 1);
 		if (length > 7) {
 			int l = offset;

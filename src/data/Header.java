@@ -151,6 +151,14 @@ public class Header {
 		return artists;
 	}
 
+	public Album[] getAlbums() {
+		return albums;
+	}
+
+	public Track[] getTracks() {
+		return tracks;
+	}
+
 	public Album[] getAlbumsByArtists(SelectItemData[] artists) {
 		Album[] result;
 		int size = 0, i;

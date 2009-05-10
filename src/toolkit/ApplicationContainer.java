@@ -30,7 +30,7 @@ public class ApplicationContainer extends Container {
 
 	public void draw(Canvas canvas) {
 		canvas.noStroke();
-		canvas.fill(0xFFFFFFFF);
+		canvas.fill(0xFFCFCFCF);
 		canvas.rect(0, 0, getWidth(), getHeight());
 		super.draw(canvas);
 	}

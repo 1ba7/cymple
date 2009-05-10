@@ -107,9 +107,9 @@ public class GenerateBody extends Header {
 			artist = artistListens[tracks[i % trackCount].getArtist().id()];
 			for (int j = 0; j < 1024; j++) {
 				user[j] += userTrackListens[i][j];
+				artist[j] += userTrackListens[i][j];
+				album[j] += userTrackListens[i][j];
 				track[j] += userTrackListens[i][j];
-				album[j] += userTrackListens[i][j];
-				album[j] += userTrackListens[i][j];
 				totalListens[j] += userTrackListens[i][j];
 			}
 		}

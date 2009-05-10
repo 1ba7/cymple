@@ -1,0 +1,78 @@
+\usepackage{geometry}
+\geometry{headsep=0.5cm,headheight=0.3cm,nofoot}
+\usepackage{ragged2e}
+\usepackage[
+	urlbordercolor = {1 1 1},
+	linkbordercolor = {1 1 1},
+	citebordercolor = {1 1 1},
+	urlcolor = blue,
+	colorlinks = true,
+	citecolor = black,
+	linkcolor = black]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+\usepackage{setspace}
+\usepackage[square,super]{natbib}
+\onehalfspacing
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[R]{\thepage}
+\bibliographystyle{unsrt}
+
+\newcommand{\group}{Stephen Downes and Cristover Lopes and Shane O'Brien and P\'{a}draig Redmond and Stuart Rigby-Jones and Daniel Walsh}
+
+\newcommand{\horizontalrule}{\rule{\linewidth}{0.5mm}}
+
+\newcommand{\wordcount}{\input{./.wc}}
+
+\newcommand{\titletext}[2]{
+		\title{#1}
+		\fancyhead[L]{\textsc{#1: #2}}
+		\horizontalrule\\[0.4cm]
+		\textbf{\LARGE{#1}: \Large{\setstretch{0.5}#2}\setstretch{1}}
+		\horizontalrule\\[1cm]\singlespacing}
+
+\newcommand{\course}[2]{
+	\textsc{\LARGE \textbf{#1} --- #2}\\[1cm]}
+
+\newcommand{\assignment}[1]{
+	\textsc{\Large{#1}\\\small{\wordcount words}}\\[4cm]}
+
+\newcommand{\authortext}[1]{
+	\author{#1}
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Group:}\\
+			#1
+		\end{flushleft}
+	\end{minipage}}
+
+\newcommand{\lecturer}[1]{
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{Lecturer:}\\
+			#1
+		\end{flushright}
+	\end{minipage}\\[1.5cm]}
+
+\newcommand{\datetext}[1]{\date{#1}\large{#1}}
+
+\renewcommand{\headrulewidth}{0.3pt}
+
+\newcommand{\link}[2]{\href{#1}{\texttt{#2}}}
+
+\newenvironment{authors}
+	{\begin{center}
+		\large{\textbf{Authors}}
+	\end{center}
+	\begin{center}
+	\normalsize}
+	{\end{center}}
+
+\renewenvironment{abstract}
+	{\begin{center}
+		\section*{Abstract}
+	\end{center}
+	\normalsize}
+	{}

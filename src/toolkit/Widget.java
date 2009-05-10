@@ -37,15 +37,14 @@ public abstract class Widget {
 		mouse.sendEvents(this);
 	}
 
-	public void draw(Canvas canvas) {}
+	public abstract void draw(Canvas canvas);
 
 	public boolean visible() {
-	/*	return parent.isChildVisible(this)
-			&& getAbsoluteX() + getInternalWidth() >= getVisibleX()
+		return parent.isChildVisible(this);
+/*			&& getAbsoluteX() + getInternalWidth() >= getVisibleX()
 			&& getAbsoluteX() + getInternalWidth() < getVisibleX() + getWidth()
 			&& getAbsoluteY() + getInternalHeight() >= getVisibleY()
 			&& getAbsoluteY() + getInternalHeight() < getVisibleY() + getHeight();*/
-		return true;
 	}
 
 	public int getAbsoluteX() {
@@ -89,11 +88,11 @@ public abstract class Widget {
 	}
 
 	public boolean contains(int x, int y) {
-		return visible()
+		return visible() && parent.contains(x, y)
 			&& x >= getAbsoluteX() && x < (getAbsoluteX() + getInternalWidth())
-			&& y >= getAbsoluteY() && y < (getAbsoluteY() + getInternalHeight())
-			&& x >= getVisibleX() && x < (getVisibleX() + getWidth())
-			&& y >= getVisibleY() && y < (getVisibleY() + getHeight());
+			&& y >= getAbsoluteY() && y < (getAbsoluteY() + getInternalHeight());
+/*			&& x >= getVisibleX() && x < (getVisibleX() + getWidth())
+			&& y >= getVisibleY() && y < (getVisibleY() + getHeight());*/
 	}
 
 	public Application getApp() {
@@ -114,7 +113,7 @@ public abstract class Widget {
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < width; j++) {
 					mask[canvas.getWidth() * (getVisibleY() + i) + getVisibleX()
-						 + j] = 1;
+						 + j] = 255;
 				}
 			}
 		}

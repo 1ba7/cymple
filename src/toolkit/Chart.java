@@ -15,7 +15,7 @@ public class Chart extends Widget {
 	}
 
 	public int getInternalHeight() {
-		return chartData == null ? getHeight() : 18 * chartData.size(key);
+		return chartData == null ? getHeight() : 36 * chartData.size(key);
 	}
 
 	public ChartKey getKey() {
@@ -35,17 +35,37 @@ public class Chart extends Widget {
 		}
 		else {
 			canvas.noStroke();
-			canvas.fill(0xFFFFFFFF);
+			canvas.fill(0xFFcfcfcf);
 			canvas.rect(0, 0, getInternalWidth(), getInternalHeight());
+			String[] split;
+			String bold, normal;
+			long absolute;
+			double relative;
+			int half = getWidth() / 2;
 			for (int i = 0; i < chartData.size(key); i++) {
-				canvas.fill(0x80000099 + (i % 2 == 0 ? 0 : 0x333333));
-				canvas.rect(0, 18 * i, (float)(getWidth() *
-					chartData.getRelative(key, i)), 18);
+				split = chartData.getName(key, i).split(",");
+				bold = split[0];
+				normal = split.length > 1 ? split[1] : "";
+				relative = chartData.getRelative(key, i);
+				absolute = chartData.getAbsolute(key, i);
+				canvas.fill(0xff84fa1e);
+				canvas.rect(0, 36 * i, half, 36);
+				canvas.rect(half, 36 * i, (int)(half * relative), 36);
+				if (i % 2 == 1) {
+					canvas.fill(0x33000000);
+					canvas.rect(0, 36 * i, half, 36);
+					canvas.rect(half, 36 * i, (int)(half * relative), 36);
+				}
 				canvas.fill(0xFF000000);
+				canvas.textFont(boldFont());
+				canvas.text(bold, 5, 1 + 36 * i + (split.length > 1 ? 0 : 9), half - 20, 36);
 				canvas.textFont(defaultFont());
-				canvas.text(chartData.getName(key, i) + ": " +
-					chartable.getScale().number(chartData.getAbsolute(key, i)),
-					5, 18 * i + 14);
+				canvas.text(normal, 15, 1 + 36 * i + 18, half - 20, 36);
+				canvas.textFont(boldFont());
+				canvas.textAlign(canvas.RIGHT);
+				canvas.text(chartable.getScale().number(absolute),
+					(int)(half + half * relative) - 5, 36 * i + 23);
+				canvas.textAlign(canvas.LEFT);
 			}
 		}
 	}

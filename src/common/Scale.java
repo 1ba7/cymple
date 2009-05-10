@@ -121,13 +121,13 @@ public class Scale {
 	private SimpleDateFormat format(long start, long finish) {
 		long difference = finish - start;
 
-		if (difference < 86400000L) {
+	/*	if (difference < 86400000L) {
 			return new SimpleDateFormat("MMMM dd, kk:mm, yyyy");
 		}
 		else if (difference < 15552000000L) {
 			return new SimpleDateFormat("MMMM dd, yyyy");
 		}
-		else {
+		else */{
 			return new SimpleDateFormat("MMMM yyyy");
 		}
 	}
