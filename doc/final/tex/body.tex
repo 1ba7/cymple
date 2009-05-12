@@ -43,83 +43,33 @@ We ended up with three YAML files: \mono{data.yml}, \mono{common.yml} and \mono{
 \subsection{Processing woes}
 However, we soon ran into a problem. We had three YAML files, but Processing only allows a flat directory structure for a `sketch'. What we had was not a sketch though, it was a project. Ideally we would have liked to keep common, data and toolkit classes in separate directories to reinforce the isolation of the model and the view. This was only one of the problems that we were having with using the Processing IDE --- Processing's auto-indentation isn't the best, so it made it hard to write readable, consistently-indented code. Despite supporting them internally, Processing's compiler has no support for Java 5.0 syntax --- enumerated types, generics and foreach loops cannot be used with Processing, features which would be useful to us. And these are problems that exist \emph{after} you get your \mono{.pde} file compiled --- Processing's cryptic error messages make it difficult to even get to that stage.
 
-The solution we came up with was to not use the Processing IDE at all. Instead, we would write the project in Java, using Processing's \mono{core.jar}. \mono{.pde} files ultimately compile down to \mono{.java} files --- the Java we wrote was simply the Java that processing itself would generate. The main differences were that we had to put a \mono{main} method in a class that extends \mono{PApplet}, and we had to use the \mono{0xhexadecimal} int notation for color literals. The latter turned out to be an advantage as it made it easier to give colors an alpha value than in `pure' Processing.
+The solution we came up with was to not use the Processing IDE at all. Instead, we would write the project in Java, using Processing's \mono{core.jar}. \mono{.pde} files ultimately compile down to \mono{.java} files --- the Java we wrote was simply the Java that Processing itself would generate. The main differences were that we had to put a \mono{main} method in a class that extends \mono{PApplet}, and we had to use the \mono{0xhexadecimal} int notation for color literals. The latter turned out to be an advantage as it made it easier to give colors an alpha value than in `pure' Processing.
 
-\begin{spec}{Header specification}
-\column{4 bytes}{Magic number identifier for \mono{cymple.bin} files.}{0x20080427}
-\column{4 bytes}{The total size of this header.}{24908}
-\column{8 bytes}{The earliest time in the dataset (milliseconds since 1970).}{1083438134000}
-\column{8 bytes}{The latest time in the dataset (milliseconds since 1970).}{1239908533000}
-\column{2 bytes}{The number of users in the dataset.}{65}
-\column{2 bytes}{The number of artists in the dataset.}{39}
-\column{2 bytes}{The number of albums in the dataset.}{117}
-\column{2 bytes}{The number of tracks in the dataset.}{1443}
-\column{4 bytes}{The size of the users block.}{458}
-\column{$\cdots$}{The users block.}{"{\textbackslash}000A{\textbackslash}006ANDREW\ldots"}
-\column{4 bytes}{The size of the artists block.}{24411}
-\column{$\cdots$}{The artists block.}{"{\textbackslash}000'{\textbackslash}016Arctic\ldots"}
-\end{spec}
+\section{Data Layer}
+When our focused turned to implementing the data layer, it seemed logical that there should be some separation of the code which read and stored the data efficiently in memory and the API which provided an interface to this data for the rest of the application. Much of the auxillary data structures which would be used to initially sort the data would no longer be of use once the data was sorted. Many of these data structures would be very heavy on memory requirements and as we wanted to beat Niall's application's total, we were keeping memory usage in mind. Although these data structures would be garbage collected by the JVM, it still felt somehow dirty that the code for sorting and storing the data wasn't completely separate to the code for reading the data.
 
-\begin{spec}{Users block specification}
-\column{2 bytes}{The number of users.}{65}
-\column{$\cdots$}{List of names of users, sorted alphabetically.}{"{\textbackslash}006ANDREW\ldots"}
-\end{spec}
+What we eventually decided to do about this was to completely separate these two steps, so that the data would already be sorted when the application was run. What this necessitated was that we create our own file format which would store the sorted data in a way that could be easily read by the application, i.e., in a binary file format. We ended up doing this twice --- i.e., our initial file format had some limitations and we replaced it with a better one. Both of these formats, and the reasons why a switch was necessary, are detailed below. We call this file format \mono{cymple.bin}.
 
-\begin{spec}{Artists block specification}
-\column{2 bytes}{The number of artists.}{39}
-\column{$\cdots$}{List of artist blocks, sorted alphabetically.}{"{\textbackslash}016Arctic\ldots"}
-\end{spec}
+\subsection{Initial format}
+The initial file format consisted of three parts: the header, the listen indices and the listen blocks. The specifications of these parts are outlined in Tables \ref{header}, \ref{listenindices} and \ref{listenblocks} respectively. The header contained information about the users, artists, albums and tracks in the dataset and the timerange over which the data spanned. What the header didn't contain was any information linking users, tracks and times like how CSV file does -- this is the information that was stored in the rest of the file. The listen blocks store sorted arrays of times (represented as shorts). The listen indices point to the start of the listen block for a given user, user-artist tuple, user-album tuple or user-track tuple. Again, Shane wrote a Ruby script called \mono{gen-bin} to convert from the CSV file into the binary file format\cite{bin}. The script is not very efficient, but it was quick to write and we needed a file in \mono{cymple.bin} format before we could progress any further. The format explained in more detail in the specifications found in the appendix (on page \pageref{appendix}).
 
-\begin{spec}{Artist block specification}
-\column{$\cdots$}{This artist's name, encoded as specified below.}{Arctic Monkeys}
-\column{$\cdots$}{This artist's albums block, sorted alphabetically.}{"{\textbackslash}000{\textbackslash}002{\textbackslash}031Fav\ldots"}
-\end{spec}
+As specified by the YAML specification, the data layer needs to be able to return a \mono{ChartData} and a \mono{GraphData} based on an arbitrary set of users and tracks given. It turned out to be impractical (with this file format) to support track-level subsets --- instead the data layer was given an arbitrary set of users and \emph{albums}. When the data layer was given a set of users and albums, it read the listen blocks for each of these users and albums in from the file and sorted them into a huge in-memory array called \mono{listens}\footnote{As it was an array of shorts, the maximum number of listens this data layer could support was 200,000,000 --- the 512MB memory limit is exceeded soon after that.}. What was required for a \mono{GraphData} was a series of points describing the graph. By performing a binary search on \mono{listens} for two given times and subtracting the results, what you are left with is the number of listens between those times. We call this `sampling' and it's how this data layer generated the points (or `samples') for the graph. What was required for a \mono{ChartData} was a list of \mono{String}s (names), a list of \mono{double}s (relative widths of bars) and a list of \mono{int}s (absolute number of listens). The procedure for generating this was complicated, but involved more binary searches.\cite{olddata}
 
-\begin{spec}{Albums block specification}
-\column{2 bytes}{The number of albums in this albums block.}{2}
-\column{$\cdots$}{List of album blocks, encoded as described below.}{"{\textbackslash}031Favourite\ldots"}
-\end{spec}
+As the application started to come together, we started realising the limitations of this file format. The totals generated with binary searches weren't always accurate and this was embarrassingly obvious on small subsets of the data. As the size of the dataset went into the millions, there would be a huge amount of duplicate values in the \mono{listens} array --- by design, of course, but the idea of having an array whose \emph{keys} are times and values are the number of listens `at' that time seemed more appealing than ever. The biggest problem with this format though came up when we tried to implement the statusbar --- it wasn't designed with concurrency in mind at all. None of the data structures were thread safe and it wasn't clear what which should go in which thread. Because of these limitations, we decided to redo the data layer, more or less from scratch.
 
-\begin{spec}{Album block specification}
-\column{$\cdots$}{This album's title, encoded as specified below.}{"{\textbackslash}031Favourite\ldots"}
-\column{$\cdots$}{This album's tracks block, encoded as described below.}{"{\textbackslash}000{\textbackslash}f{\textbackslash}003505\ldots"}
-\end{spec}
+\subsection{Revised format}
+The new data layer was designed with concurrency in mind (it had its own thread) and was based on the concept of ListenVectors.\cite{newdata} A ListenVector, as described in Table \ref{listenvector}, is a data structure which wraps an array of 1024 8-byte integers (i.e., \mono{long}s). While previously we normalised time to a value between -32768 and 32767, we now normalise time to a value between 0 and 1024. So \mono{listenVector[n]} is the number of listens \emph{before} time n, where n is a value between 0 and 1024. While we lose a lot of accuracy (over a 5-year period, 1 unit of time is roughly 2 days), the total number of listens that our data layer can support is now the largest number that can be stored in a \mono{long} --- in Java's case, 9\e{18}.
 
-\begin{spec}{Tracks block specification}
-\column{2 bytes}{The number of tracks in this tracks block.}{12}
-\column{$\cdots$}{List of names of tracks, sorted alphabetically.}{"{\textbackslash}003505{\textbackslash}tBal\ldots"}
-\end{spec}
+Ruby is no longer used to generate \mono{cymple.bin} --- the algorithm for doing so is now much simpler, so it didn't take too long to implement it in Java. The process for converting a CSV file into a \mono{cymple.bin} file has changed somewhat though. There are now two steps --- generating the header (the header format in the revised file format is still the same as in the initial one), which is done by \mono{GenerateHeader.java}\cite{header} and generating the body, which is done by \mono{GenerateBody.java}\cite{body}. The reason for this is that to generate a body from a CSV file with 9\e{18} listens from it would be impossible --- a \mono{dataset.csv} with 200,000,000 entries is 15GB in size. So while \mono{GenerateBody.java} \emph{can} generate the body from a CSV file, it also supports generating a random body without a CSV file, which can generate much larger data sets.
 
-\begin{spec}{String specification}
-\column{1 byte}{The number of bytes in the string.}{3}
-\column{$\cdots$}{The string itself, encoded using UTF-8 character encoding.}{"505"}
-\end{spec}
 
-\begin{spec}{Listen indices specification}
-\column{$\cdots$}{A listen pointer\footnote{A listen pointer is a a 4-byte file pointer which refers to the point in the file where a user's listen block starts. The length of this listen pointer is not encoded here, because it can be derived from subtracting from the next listen pointer.} for each user.}{"{\textbackslash}000{\textbackslash}006{\textbackslash}272L\ldots"}
-\column{$\cdots$}{A listen pointer for each user-artist tuple\footnote{A listen belongs to a user-artist tuple (User U, Artist A) if that listen links User U to a track by Artist A.}.}{"{\textbackslash}000{\textbackslash}vN,\ldots"}
-\column{$\cdots$}{A listen pointer for each user-album tuple.}{"{\textbackslash}000{\textbackslash}017{\textbackslash}342{\textbackslash}f\ldots"}
-\column{$\cdots$}{A listen pointer for each user-track tuple.}{"{\textbackslash}000{\textbackslash}024u{\textbackslash}354\ldots"}
-\end{spec}
 
-\begin{spec}{Listen blocks specification}
-\column{$\cdots$}{Sorted lists of times\footnote{These times are stored as shorts. The time each short represents is derived from the earlist time and latest time encoded in the header. -32768 would represent the earliest time, 32767 would represent the latest time.} of listens for each user.}{"{\textbackslash}000{\textbackslash}f{\textbackslash}000 \ldots"}
-\column{$\cdots$}{Sorted lists of times of listens for each user-artist tuple.}{"{\textbackslash}360{\textbackslash}275{\textbackslash}360\ldots"}
-\column{$\cdots$}{Sorted lists of times of listens for each user-album tuple.}{"{\textbackslash}177'{\textbackslash}177;\ldots"}
-\column{$\cdots$}{Sorted lists of times of listens for each user-track tuple.}{"U{\textbackslash}335{\textbackslash}200{\textbackslash}345\ldots"}
-\end{spec}
 
-\begin{spec}{New format specification}
-\column{8 kb}{The ListenVector for all listens.}{"{\textbackslash}000{\textbackslash}017{\textbackslash}374Q\ldots"}
-\column{$\cdots$}{A ListenVector for each user.}{"{\textbackslash}377{\textbackslash}002{\textbackslash}025\ldots"}
-\column{$\cdots$}{A ListenVector for each artist.}{"{\textbackslash}211\_{\textbackslash}221W\ldots"}
-\column{$\cdots$}{A ListenVector for each album.}{"\t{\textbackslash}212{\textbackslash}267{\textbackslash}000\ldots"}
-\column{$\cdots$}{A ListenVector for each track.}{"0{\textbackslash}324{\textbackslash}316{\textbackslash}363\ldots"}
-\column{$\cdots$}{A ListenVector for each user-track tuple.}{"{\textbackslash}000({\textbackslash}230h\ldots"}
-\end{spec}
 
-\begin{spec}{ListenVector specification}
-\column{8 bytes}{The number of listens before the 1\textsuperscript{st} time.\footnote{In this format, there are only 1024 possible values for time, so over five years our unit of time is only accurate to about two days. If you needed to know how many listens there were between the 79\textsuperscript{th} time and the 200\textsuperscript{th} listens, all you have to do is get the 200\textsuperscript{th} entry in the ListenVector and subtract the 79\textsuperscript{th} entry.}}{"\textbackslash000\textbackslash017\textbackslash374Q\ldots"}
-\column{}{\hspace{5.25cm}\textbf\vdots}{}
-\column{8 bytes}{The number of listens before the 1024\textsuperscript{th} time.}{"?\textbackslash376\textbackslash245\textbackslash322\ldots"}
-\end{spec}
+
+
+
+
+
+
+

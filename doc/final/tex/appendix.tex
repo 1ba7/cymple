@@ -1,0 +1,82 @@
+\section*{Appendix}
+\label{appendix}
+\thispagestyle{empty}
+All numeric values are encoded with big endian byte order.
+\begin{spec}{Header specification}{header}
+\column{4 bytes}{Magic number identifier for \mono{cymple.bin} files.}{0x20080427}
+\column{4 bytes}{The total size of this header.}{24908}
+\column{8 bytes}{The earliest time in the dataset (milliseconds since 1970).}{1083438134000}
+\column{8 bytes}{The latest time in the dataset (milliseconds since 1970).}{1239908533000}
+\column{2 bytes}{The number of users in the dataset.}{65}
+\column{2 bytes}{The number of artists in the dataset.}{39}
+\column{2 bytes}{The number of albums in the dataset.}{117}
+\column{2 bytes}{The number of tracks in the dataset.}{1443}
+\column{4 bytes}{The size of the users block.}{458}
+\column{$\cdots$}{The users block.\footnote{The users block specification is outlined in Table \ref{usersblock}.}}{"{\textbackslash}000A{\textbackslash}006ANDREW\ldots"}
+\column{4 bytes}{The size of the artists block.}{24411}
+\column{$\cdots$}{The artists block.\footnote{The artists block specification is outlined in Table \ref{artistsblock}.}}{"{\textbackslash}000'{\textbackslash}016Arctic\ldots"}
+\end{spec}
+
+\begin{spec}{Listen indices specification}{listenindices}
+\column{$\cdots$}{A listen pointer\footnote{A listen pointer is a a 4-byte file pointer which refers to the point in the file where a user's listen block starts. The length of this listen pointer is not encoded here, because it can be derived from subtracting from the next listen pointer.} for each user.}{"{\textbackslash}000{\textbackslash}006{\textbackslash}272L\ldots"}
+\column{$\cdots$}{A listen pointer for each user-artist tuple\footnote{A listen belongs to a user-artist tuple (User U, Artist A) if that listen links User U to a track by Artist A.}.}{"{\textbackslash}000{\textbackslash}vN,\ldots"}
+\column{$\cdots$}{A listen pointer for each user-album tuple.}{"{\textbackslash}000{\textbackslash}017{\textbackslash}342{\textbackslash}f\ldots"}
+\column{$\cdots$}{A listen pointer for each user-track tuple.}{"{\textbackslash}000{\textbackslash}024u{\textbackslash}354\ldots"}
+\end{spec}
+
+\begin{spec}{Listen blocks specification}{listenblocks}
+\column{$\cdots$}{Sorted lists of times\footnote{These times are stored as shorts. The time each short represents is derived from the earlist time and latest time encoded in the header. -32768 would represent the earliest time, 32767 would represent the latest time.} of listens for each user.}{"{\textbackslash}000{\textbackslash}f{\textbackslash}000 \ldots"}
+\column{$\cdots$}{Sorted lists of times of listens for each user-artist tuple.}{"{\textbackslash}360{\textbackslash}275{\textbackslash}360\ldots"}
+\column{$\cdots$}{Sorted lists of times of listens for each user-album tuple.}{"{\textbackslash}177'{\textbackslash}177;\ldots"}
+\column{$\cdots$}{Sorted lists of times of listens for each user-track tuple.}{"U{\textbackslash}335{\textbackslash}200{\textbackslash}345\ldots"}
+\end{spec}
+
+\begin{spec}{New format specification}{body}
+\column{8 kb}{The ListenVector for all listens.}{"{\textbackslash}000{\textbackslash}017{\textbackslash}374Q\ldots"}
+\column{$\cdots$}{A ListenVector for each user.}{"{\textbackslash}377{\textbackslash}002{\textbackslash}025\ldots"}
+\column{$\cdots$}{A ListenVector for each artist.}{"{\textbackslash}211\_{\textbackslash}221W\ldots"}
+\column{$\cdots$}{A ListenVector for each album.}{"\t{\textbackslash}212{\textbackslash}267{\textbackslash}000\ldots"}
+\column{$\cdots$}{A ListenVector for each track.}{"0{\textbackslash}324{\textbackslash}316{\textbackslash}363\ldots"}
+\column{$\cdots$}{A ListenVector for each user-track tuple.}{"{\textbackslash}000({\textbackslash}230h\ldots"}
+\end{spec}
+
+\begin{spec}{ListenVector specification}{listenvector}
+\column{8 bytes}{The number of listens before the 1\textsuperscript{st} time.\footnote{In this format, there are only 1024 possible values for time, so over five years our unit of time is only accurate to about two days. If you needed to know how many listens there were between the 79\textsuperscript{th} time and the 200\textsuperscript{th} listens, all you have to do is get the 200\textsuperscript{th} entry in the ListenVector and subtract the 79\textsuperscript{th} entry.}}{"\textbackslash000\textbackslash017\textbackslash374Q\ldots"}
+\column{}{\hspace{5.25cm}\textbf\vdots}{}
+\column{8 bytes}{The number of listens before the 1024\textsuperscript{th} time.}{"?\textbackslash376\textbackslash245\textbackslash322\ldots"}
+\end{spec}
+
+\begin{spec}{Users block specification}{usersblock}
+\column{2 bytes}{The number of users.}{65}
+\column{$\cdots$}{List of names of users, sorted alphabetically.\footnote{The String encoding specification is outlined in Table \ref{string}.}}{"{\textbackslash}006ANDREW\ldots"}
+\end{spec}
+
+\begin{spec}{Artists block specification}{artistsblock}
+\column{2 bytes}{The number of artists.}{39}
+\column{$\cdots$}{List of artist blocks, sorted alphabetically.\footnote{The artist block specification is outlined in Table \ref{artistblock}.}}{"{\textbackslash}016Arctic\ldots"}
+\end{spec}
+
+\begin{spec}{Artist block specification}{artistblock}
+\column{$\cdots$}{This artist's name.\footnote{The String encoding specification is outlined in Table \ref{string}.}}{Arctic Monkeys}
+\column{$\cdots$}{This artist's albums block, sorted alphabetically.\footnote{The albums block specification is outlined in Table \ref{albumsblock}.}}{"{\textbackslash}000{\textbackslash}002{\textbackslash}031Fav\ldots"}
+\end{spec}
+
+\begin{spec}{Albums block specification}{albumsblock}
+\column{2 bytes}{The number of albums in this albums block.}{2}
+\column{$\cdots$}{List of album blocks, sorted alphabetically.\footnote{The album block specification is outlined in Table \ref{albumblock}.}}{"{\textbackslash}031Favourite\ldots"}
+\end{spec}
+
+\begin{spec}{Album block specification}{albumblock}
+\column{$\cdots$}{This album's title.\footnote{The String encoding specification is outlined in Table \ref{string}.}}{"{\textbackslash}031Favourite\ldots"}
+\column{$\cdots$}{This album's tracks block, encoded as described below.\footnote{The tracks block specification is outlined in Table \ref{tracksblock}.}}{"{\textbackslash}000{\textbackslash}f{\textbackslash}003505\ldots"}
+\end{spec}
+
+\begin{spec}{Tracks block specification}{tracksblock}
+\column{2 bytes}{The number of tracks in this tracks block.}{12}
+\column{$\cdots$}{List of names of tracks, sorted alphabetically.\footnote{The String encoding specification is outlined in Table \ref{string}.}}{"{\textbackslash}003505{\textbackslash}tBal\ldots"}
+\end{spec}
+
+\begin{spec}{String specification}{string}
+\column{1 byte}{The number of bytes in the string.}{3}
+\column{$\cdots$}{The string itself, encoded using UTF-8 character encoding.}{"505"}
+\end{spec}

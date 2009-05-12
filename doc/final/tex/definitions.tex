@@ -15,6 +15,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{float}
 \usepackage[square,super]{natbib}
 \onehalfspacing
 \pagestyle{fancy}
@@ -91,9 +92,10 @@
 \end{figure}
 }
 
-\newenvironment{spec}[1]
-	{\begin{table}
+\newenvironment{spec}[2]
+	{\thispagestyle{empty}\begin{table}[H]
 	\caption{#1}
+	\label{#2}
 	\begin{minipage}{14.7cm}
 	\begin{tabular*}{14.7cm}{p{1.07cm}p{9cm}p{4.63cm}}
 	\toprule
@@ -102,7 +104,7 @@
 	{\bottomrule
 	\end{tabular*}
 	\end{minipage}
-	\end{table}}
+	\end{table}\thispagestyle{empty}}
 
 \newcommand{\column}[3]
 	{#1 & #2 & \mono{#3} \\}

@@ -1,6 +1,6 @@
 #!/bin/sh
 cd `basename $0`
-cat tex/abstract.tex tex/body.tex | detex | wc -w > .wc
+cat tex/body.tex | detex | wc -w > .wc
 pdflatex paper.tex
 bibtex paper
 pdflatex paper.tex
