@@ -5,4 +5,4 @@ pdflatex paper.tex
 bibtex paper
 pdflatex paper.tex
 pdflatex paper.tex
-rm paper.aux paper.log paper.out paper.toc .wc *~ tex/*~ paper.bbl paper.blg
+rm paper.aux paper.log paper.out paper.toc .wc *~ tex/*~ paper.bbl paper.blg paper.lot paper.lof

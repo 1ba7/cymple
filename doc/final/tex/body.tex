@@ -1,8 +1,125 @@
+\section{Abstract}
+Cymple, a recursive acronym which means `Cymple: Your Musical Past Lovingly Envisioned', is a data visualisation application created using Processing, as outlined by the project specification.\cite{specification} The dataset it visualises consists of entries linking a user, a track and a time to mean `user A listened to track B at time C'. It allows the user to interactively select arbitrary subsets of the given dataset and visualises them appropriately. This report outlines the steps that we took to get from the project specification to the final application.
+
 \section{Initial Organisation}
 \subsection{Communication}
-One of the first things that we did as a team was work out how we were going to communicate with each other. We chose to communicate using email, instant messaging and mobile phones, which all have different merits. Email was convenient for simultaneously informing the group of important information such meeting cancellations or major changes to the codebase. Instant messaging allowed specific group members to discuss ideas more thoroughly than possible in an email. Mobile phones allowed us to organise ad-hoc meetings inside college or find out where somebody in college. We figured we would be most effective as a group if we were able to use all of these media.
+One of the first things that we did as a team was work out how we were going to communicate with each other. We chose to communicate using email, instant messaging and mobile phones, which all have different merits. Email was convenient for simultaneously informing the group of important information such meeting cancellations or major changes to the codebase. Instant messaging allowed specific group members to discuss ideas more thoroughly than possible in an email. Mobile phones allowed us to organise ad-hoc meetings inside college or find out where somebody was. We figured we would be most effective as a group if we were able to use all of these media.
 
 For email, we first tried setting up a Google Group, but we were unable to do this using our college email accounts. Instead, we set up an email address which forwards all incoming mail to all of our email addresses --- if we wanted to send an email to the group, we would send it to that address. For instant messaging, we simply exchanged our college email addresses and communicated using Google Talk. Some of the group set up their college Google Talk account with desktop-based instant messaging applications such as Pidgin and Trillian. For mobile phones, it was a simple case of exchanging phone numbers.
 
-\subsection{Revision Control}
-The next thing that we did was work out what revision control system we were going to use. There were many reasons for choosing Git\cite{better} --- our reasons were that Shane had experience using Git previously (and so could share his knowledge with the rest of the group easily) and the convenient web-based interface for navigating the source code and chagnes to it provided by GitHub.
+Although we would see each other during the week anyway, we needed to organise fixed meeting times at which we could discuss ideas in depth. After a discussion while consulting our revised timetable for this term, we chose to meet have meetings at 11:00 -- 13:00 on Mondays and 12:00 -- 13:00 on Thursdays. We wanted to have the meetings somewhere quieter than LG12, so Stiabh suggested the Hamilton library's study room. We were able to book these for the Monday, but not the Thursday. On Thursday, we used ICT 2 which happened to be free at that time.
+
+\subsection{Revision control system}
+The next thing that we did was work out what revision control system we were going to use. While there are many reasons for choosing Git\cite{better}, there were two things in particular that convinced us to. Shane's prior experience with Git meant that Git had a smoother learning curve than the alternatives (e.g., SVN). This was because Shane was able to quickly bring the rest of the group up to speed with Git. The other big advantage of Git was GitHub, a web application and service built on top of Git. It gave us a central repository for our codebase and a convenient web interface for nagivating the code and viewing changes. GitHub makes it very easy to see who created a file, who changed it at what time --- in other words, it allowed easily us to see who was working on what at any time.
+
+We set up a GitHub account for each person in the group, as well as a `central' account for the group which would store the main repository.\cite{github} We arranged to have a meeting in M20 at 15:00 on a Wednesday, at which Shane would run a tutorial on Git. The tutorial would include getting Git set up on everybody's laptop as well as demonstrating how to use it. Everybody was given a copy of \mono{msysgit}, \mono{putty} and a guide with screenshots of how to use Git on Windows\cite{guide}. The tutorial involved running through this guide and making sure everybody was comfortable with the concepts behind Git. Once we everyone was set up with Git and we had a communications mechanism in place, it was time to focus on implementing the project specification.\cite{specification}
+
+\section{Design Process}
+One of the first things that was discussed was how we were going to structure the project. The structure we chose differs slightly (semantically at least) from the one suggested in the project specification. The structure of our project is based on the Model-View-Controller\cite{mvc} pattern, where the model (the internal representation of the application's state) and the view (the user interface) are isolated components, and the controller responds to events (usually originating in the view) and updates the model appropriately.
+
+The model in our case is what we refer to as the `data layer'. The data layer provides an API to the file which stores the entries and returns meaningful representations of the data. For maximum flexibility, we wanted to write a widget toolkit in Processing that automatically handles the nasty stuff like positions, sizes and event handling. This widget toolkit was our view. Part of this toolkit was an event framework --- we wanted individual widgets to be able to respond to mouse events with Javascript-style \mono{onClick} and \mono{onMouseOver} methods. This event framework was our controller, so for us the view and the controller would be part of the same codebase.
+
+What became clear quite early on in the design process that the most important thing to do was to finalise the visual design of the application itself. What sort of representations of the data the data layer should return (Charts? Graphs?), what widgets should the widget toolkit contain (Scrollbars? Buttons?) and what events should be supported by the event framework (Scrolling? Dragging?) depend totally on the design of the application. The application's visual design was therefore what focused on at our next meeting.
+
+\section{Initial Interface Design}
+At the meeting where we discussed the application's visual design, the discussion was based on a paper sketch done by Cris. This sketch was somewhat influenced by Niall O'Hara's application in the sense one of its goals was to support the selection of more subsets than were supported by Niall's application. Most of the refinements which we made to Cris' sketch were aimed at reducing clutter and ambiguity, as well as keeping ease of implementation in mind. We also decided against an interface for selecting time that would require the user to enter the day, month and year separately as we felt this would be cumbersome to use.
+
+\image{stiabh.png}{width=10cm}{The design we came up with, digitised by Stiabh.}
+
+This interface has two panes --- the left one allows the user to select subsets of the data and the right one visualises the selected subset. The user is able to select what users, artists, albums and tracks they want to be in the subset of the data being visualised. The design supports visualising the data with charts and graphs. There is no tool in the left pane for selecting subsets of the data based on time because at the time we thought that we should have a separate interface for time-based selection for charts and graphs, so it would go in the right pane. This is something we changed our mind about later on in the final application, there is what we call a `seeker' at the bottom of the left-pane for time-based selection. What isn't shown in Figure \ref{stiabh.png} is a drop-down menu --- in this design, a drop-down menu would be shown when the user clicked `Chart' which would allow the user to select charts by either User, Artist, Album or Track. We refer to these options as `ChartKeys'.
+
+\subsection{Implications for the code}
+The interface which we came up with allows users to select subsets of the data which can contain any subset of users, artists, albums and tracks. This is significant because it is harder to implement a data layer which supports queries with an arbitrary set of users than it is to implement a data layer that can support all users or just one user. The cardinality of the set of all possible subsets of users alone (assuming 65 users) is 3.8\e{19} --- in other words, it is impractical to just pre-calculate the results of all possible queries, they must be dynamically generated. As we wanted to beat Niall's application's 2,000,000 figure, we needed this dynamic generation to be quick, so this interface's design meant that efficiency was a big concern in the data layer.
+
+What this interface meant for the widget toolkit was that we would need some sort of scrollbar and some sort of support for tabs. An interesting problem was getting the semantics of the widgets correct --- was the scrollbar a separate widget or was it all just part of some sort of \mono{ScrollableContainer}? Another thing which this interface necessitated was a statusbar at the bottom, which needed to be updated by the data layer. What we didn't realise at the time was that this would require our application to be threaded --- the data layer must be calculating queries (and thus updating the statusbar's internal state) in a separate thread to the thread that draws the application. This report discusses this in more detail later on.
+
+In terms of the event framework, this interface requires that we have some sort of scrollwheel movement. This is significant because Processing has no support for this out-of-the-box. The scrollbar also requires support for dragging --- the bar itself should be able to be dragged up and down. Our application also used `standard' events like clicking, mouse movement, etc. While Processing does support these, to be able to use them the way we wanted to (i.e., per-widget event handling), it was required to build an abstraction layer on top of this. Another issue was that when the user selects or unselects an artist in the menu in the left pane, that should update the albums which are selectable in the albums tab. This required some sort of event for the selection and unselection of a menu item (which is semantically different from the \mono{onClick} event of a menu item).
+
+\section{Class Hierarchy and Directory Structure}
+Now that we had some idea of the requirements of the data layer, the widget toolkit and the event framework, we started drawing up a class hierarchy. This was not done in UML as one might expect, but in our own YAML-based microformat\cite{yaml}. This format could describe classes, interfaces and enums. They were described in terms of their attributes, methods, classes/interfaces which they inherited from and interfaces which they implemented. Each class, interface, attribute and method had an associated bit of text which describes its purpose. Shane then wrote a script in Ruby called \mono{gen-stubs}\cite{stubs}, which generated stub \mono{.java} files, complete with comments, from the YAML descriptions. This can be thought of as a sort of reverse Javadoc process.
+
+We ended up with three YAML files: \mono{data.yml}, \mono{common.yml} and \mono{toolkit.yml}. \mono{data.yml} contained all the classes which were exclusive to the data layer (\mono{Artist}, \mono{User}, etc.) and \mono{toolkit.yml} contained all the classes which were exclusive to the widget toolkit (\mono{Widget}, \mono{Container}, etc.), as well as the event framework (\mono{Mouse}, \mono{Event}). \mono{common.yml} contained abstractions of things which were common to both the data layer and the toolkit. For example, it defined \mono{GraphData} which is a data structure that represents the points on a graph --- a \mono{GraphData} is returned from that data layer and passed to a \mono{Graph} widget, which visualises this data.
+
+\subsection{Processing woes}
+However, we soon ran into a problem. We had three YAML files, but Processing only allows a flat directory structure for a `sketch'. What we had was not a sketch though, it was a project. Ideally we would have liked to keep common, data and toolkit classes in separate directories to reinforce the isolation of the model and the view. This was only one of the problems that we were having with using the Processing IDE --- Processing's auto-indentation isn't the best, so it made it hard to write readable, consistently-indented code. Despite supporting them internally, Processing's compiler has no support for Java 5.0 syntax --- enumerated types, generics and foreach loops cannot be used with Processing, features which would be useful to us. And these are problems that exist \emph{after} you get your \mono{.pde} file compiled --- Processing's cryptic error messages make it difficult to even get to that stage.
+
+The solution we came up with was to not use the Processing IDE at all. Instead, we would write the project in Java, using Processing's \mono{core.jar}. \mono{.pde} files ultimately compile down to \mono{.java} files --- the Java we wrote was simply the Java that processing itself would generate. The main differences were that we had to put a \mono{main} method in a class that extends \mono{PApplet}, and we had to use the \mono{0xhexadecimal} int notation for color literals. The latter turned out to be an advantage as it made it easier to give colors an alpha value than in `pure' Processing.
+
+\begin{spec}{Header specification}
+\column{4 bytes}{Magic number identifier for \mono{cymple.bin} files.}{0x20080427}
+\column{4 bytes}{The total size of this header.}{24908}
+\column{8 bytes}{The earliest time in the dataset (milliseconds since 1970).}{1083438134000}
+\column{8 bytes}{The latest time in the dataset (milliseconds since 1970).}{1239908533000}
+\column{2 bytes}{The number of users in the dataset.}{65}
+\column{2 bytes}{The number of artists in the dataset.}{39}
+\column{2 bytes}{The number of albums in the dataset.}{117}
+\column{2 bytes}{The number of tracks in the dataset.}{1443}
+\column{4 bytes}{The size of the users block.}{458}
+\column{$\cdots$}{The users block.}{"{\textbackslash}000A{\textbackslash}006ANDREW\ldots"}
+\column{4 bytes}{The size of the artists block.}{24411}
+\column{$\cdots$}{The artists block.}{"{\textbackslash}000'{\textbackslash}016Arctic\ldots"}
+\end{spec}
+
+\begin{spec}{Users block specification}
+\column{2 bytes}{The number of users.}{65}
+\column{$\cdots$}{List of names of users, sorted alphabetically.}{"{\textbackslash}006ANDREW\ldots"}
+\end{spec}
+
+\begin{spec}{Artists block specification}
+\column{2 bytes}{The number of artists.}{39}
+\column{$\cdots$}{List of artist blocks, sorted alphabetically.}{"{\textbackslash}016Arctic\ldots"}
+\end{spec}
+
+\begin{spec}{Artist block specification}
+\column{$\cdots$}{This artist's name, encoded as specified below.}{Arctic Monkeys}
+\column{$\cdots$}{This artist's albums block, sorted alphabetically.}{"{\textbackslash}000{\textbackslash}002{\textbackslash}031Fav\ldots"}
+\end{spec}
+
+\begin{spec}{Albums block specification}
+\column{2 bytes}{The number of albums in this albums block.}{2}
+\column{$\cdots$}{List of album blocks, encoded as described below.}{"{\textbackslash}031Favourite\ldots"}
+\end{spec}
+
+\begin{spec}{Album block specification}
+\column{$\cdots$}{This album's title, encoded as specified below.}{"{\textbackslash}031Favourite\ldots"}
+\column{$\cdots$}{This album's tracks block, encoded as described below.}{"{\textbackslash}000{\textbackslash}f{\textbackslash}003505\ldots"}
+\end{spec}
+
+\begin{spec}{Tracks block specification}
+\column{2 bytes}{The number of tracks in this tracks block.}{12}
+\column{$\cdots$}{List of names of tracks, sorted alphabetically.}{"{\textbackslash}003505{\textbackslash}tBal\ldots"}
+\end{spec}
+
+\begin{spec}{String specification}
+\column{1 byte}{The number of bytes in the string.}{3}
+\column{$\cdots$}{The string itself, encoded using UTF-8 character encoding.}{"505"}
+\end{spec}
+
+\begin{spec}{Listen indices specification}
+\column{$\cdots$}{A listen pointer\footnote{A listen pointer is a a 4-byte file pointer which refers to the point in the file where a user's listen block starts. The length of this listen pointer is not encoded here, because it can be derived from subtracting from the next listen pointer.} for each user.}{"{\textbackslash}000{\textbackslash}006{\textbackslash}272L\ldots"}
+\column{$\cdots$}{A listen pointer for each user-artist tuple\footnote{A listen belongs to a user-artist tuple (User U, Artist A) if that listen links User U to a track by Artist A.}.}{"{\textbackslash}000{\textbackslash}vN,\ldots"}
+\column{$\cdots$}{A listen pointer for each user-album tuple.}{"{\textbackslash}000{\textbackslash}017{\textbackslash}342{\textbackslash}f\ldots"}
+\column{$\cdots$}{A listen pointer for each user-track tuple.}{"{\textbackslash}000{\textbackslash}024u{\textbackslash}354\ldots"}
+\end{spec}
+
+\begin{spec}{Listen blocks specification}
+\column{$\cdots$}{Sorted lists of times\footnote{These times are stored as shorts. The time each short represents is derived from the earlist time and latest time encoded in the header. -32768 would represent the earliest time, 32767 would represent the latest time.} of listens for each user.}{"{\textbackslash}000{\textbackslash}f{\textbackslash}000 \ldots"}
+\column{$\cdots$}{Sorted lists of times of listens for each user-artist tuple.}{"{\textbackslash}360{\textbackslash}275{\textbackslash}360\ldots"}
+\column{$\cdots$}{Sorted lists of times of listens for each user-album tuple.}{"{\textbackslash}177'{\textbackslash}177;\ldots"}
+\column{$\cdots$}{Sorted lists of times of listens for each user-track tuple.}{"U{\textbackslash}335{\textbackslash}200{\textbackslash}345\ldots"}
+\end{spec}
+
+\begin{spec}{New format specification}
+\column{8 kb}{The ListenVector for all listens.}{"{\textbackslash}000{\textbackslash}017{\textbackslash}374Q\ldots"}
+\column{$\cdots$}{A ListenVector for each user.}{"{\textbackslash}377{\textbackslash}002{\textbackslash}025\ldots"}
+\column{$\cdots$}{A ListenVector for each artist.}{"{\textbackslash}211\_{\textbackslash}221W\ldots"}
+\column{$\cdots$}{A ListenVector for each album.}{"\t{\textbackslash}212{\textbackslash}267{\textbackslash}000\ldots"}
+\column{$\cdots$}{A ListenVector for each track.}{"0{\textbackslash}324{\textbackslash}316{\textbackslash}363\ldots"}
+\column{$\cdots$}{A ListenVector for each user-track tuple.}{"{\textbackslash}000({\textbackslash}230h\ldots"}
+\end{spec}
+
+\begin{spec}{ListenVector specification}
+\column{8 bytes}{The number of listens before the 1\textsuperscript{st} time.\footnote{In this format, there are only 1024 possible values for time, so over five years our unit of time is only accurate to about two days. If you needed to know how many listens there were between the 79\textsuperscript{th} time and the 200\textsuperscript{th} listens, all you have to do is get the 200\textsuperscript{th} entry in the ListenVector and subtract the 79\textsuperscript{th} entry.}}{"\textbackslash000\textbackslash017\textbackslash374Q\ldots"}
+\column{}{\hspace{5.25cm}\textbf\vdots}{}
+\column{8 bytes}{The number of listens before the 1024\textsuperscript{th} time.}{"?\textbackslash376\textbackslash245\textbackslash322\ldots"}
+\end{spec}

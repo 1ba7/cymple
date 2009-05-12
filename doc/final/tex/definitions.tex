@@ -12,6 +12,9 @@
 \usepackage{fancyhdr}
 \usepackage{blindtext}
 \usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage[square,super]{natbib}
 \onehalfspacing
 \pagestyle{fancy}
@@ -19,6 +22,8 @@
 \fancyfoot{}
 \fancyhead[R]{\thepage}
 \bibliographystyle{unsrt}
+
+\newcommand{\mono}[1]{\texttt{#1}}
 
 \newcommand{\group}{Stephen Downes and Cristover Lopes and Shane O'Brien and P\'{a}draig Redmond and Stuart Rigby-Jones and Daniel Walsh}
 
@@ -76,3 +81,31 @@
 	\end{center}
 	\normalsize}
 	{}
+
+\newcommand{\image}[3]{
+\begin{figure}[h!]
+  \caption{#3}
+  \centering
+    \includegraphics[#2]{#1}
+	\label{#1}
+\end{figure}
+}
+
+\newenvironment{spec}[1]
+	{\begin{table}
+	\caption{#1}
+	\begin{minipage}{14.7cm}
+	\begin{tabular*}{14.7cm}{p{1.07cm}p{9cm}p{4.63cm}}
+	\toprule
+	\textbf{Size} & \textbf{Description} & \textbf{Example value} \\
+	\midrule}
+	{\bottomrule
+	\end{tabular*}
+	\end{minipage}
+	\end{table}}
+
+\newcommand{\column}[3]
+	{#1 & #2 & \mono{#3} \\}
+
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+

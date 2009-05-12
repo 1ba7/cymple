@@ -1,39 +1,3 @@
-\section{Initial Organisation}
-\begin{itemize}
-\item Organised meeting times
-\item Exchanged email addresses, phone numbers
-\item Discussed version control system, chose Git
-\item Shane and Dan worked on data layer, the others on the GUI
-\item Set up a Github account.\cite{github}
-\item Gave a Git tutorial, setup software, etc.
-\end{itemize}
-
-\section{Design Process}
-\begin{itemize}
-\item Shane proposed initial code outline
-\item Basically using MVC\cite{mvc}
-\item Separation of model (data layer), view (Widget toolkit) and controller (Widget toolkit's event framework)
-\item To progress, the user interface needed to be finalised
-\item The nature of the user interface would determine what kind of queries the data layer would need to support, what sort of widgets the widget toolkit needed, and the types of events the event framework needed to support.
-\end{itemize}
-
-\subsection{Initial Design for Interface}
-\begin{itemize}
-\item We discussed at meeting
-\item Principles we followed
-\item Graphs and charts fulfil requirements
-\item $\langle$screenshot of Stiabh's stuff$\rangle$
-\end{itemize}
-\subsection{Implications for strcuture of code}
-\begin{itemize}
-\item Needs support for charts, graphs
-\end{itemize}
-\subsection{Prototype class hierarchy written in YAML}
-\begin{itemize}
-\item Much of the data layer was conceived in an ad-hoc YAML-based format\cite{YAML}
-\item The script bin/gen-stubs generated .java stubs from this\cite{Stubs}
-\end{itemize}
-
 \section{Data Layer}
 \begin{itemize}
 \item Threw around some ideas --- using a red-black-tree combined with a linked list
